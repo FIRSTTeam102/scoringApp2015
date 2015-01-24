@@ -3,6 +3,10 @@
 set_include_path(get_include_path() . PATH_SEPARATOR . "../" . PATH_SEPARATOR . "../../" . PATH_SEPARATOR . "../../../");
 session_start();
 
+if(isset($_POST[btnLighterApp])){
+	header('location: lighter.html');
+}
+
 require_once "php/HTML/Template/IT.php";
 
 
