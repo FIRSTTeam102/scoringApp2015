@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head><style type="text/css">body {
+  font-size: 2.373em; 
+  padding: 0; 
+  margin: 0;
+  background-color: #525252;
+}
+.top {
+  border: 10px solid #525252;
+  background-color: #525252;
+}
+.main {
+  margin: 10px 10px 10px 10px;
+}
+.Alliance {border: 10px solid #525252; background-color: #BA0B0B}
+.match {border: 10px solid #525252; background-color: #ff7e00}
+.title {border: 10px solid #525252; background-color: #ff7e00}
+.top {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+  background-color: #525252;
+ } 
+.teams {
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ margin: auto;
+ }
+.teamA {margin: 10px 25px 10px 25px;}
+.teamB {margin: 10px 25px 10px 25px;}
+.teamC {margin: 10px 25px 10px 25px;}
+.bigButton {
+ background-color: #ff7e00;
+ color: #000000;
+ width: 200px;
+ height: 100px;
+ font-size: 80px;
+ }
+.truemain {
+justify-content: center;
+}
+.table0{
+  background-color: #8a8a8a;
+  margin: 0 10px 10px 0;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.table1{
+  background-color: #8a8a8a;
+  margin: 0 10px 10px 0;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.table2{
+  background-color: #8a8a8a;
+  margin: 0 10px 10px 0;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.USSR { display:table; margin: 0 0 10px 0;}
+.Russia {
+  display:table-cell;
+  vertical-align:top;
+  background-color: #8a8a8a;
+  text-align: center;
+  width:  120px;
+}
+.teams{
+  border
+}
+
+
+
+
+
+
+
+</style></head><body><div class="t" ruemain="">
+    <div class="top">
+        <!--<image src="http://www.kilkennyarms.com/wp-content/uploads/2012/09/Dark-Diamond-Plate.jpg"</image>-->
+        <div class="match">
+             <h2>Bridgewater Match 3: 14:57</h2>
+
+        </div>
+        <div class="title">
+             <h2>Autonomous Mode</h2>
+
+        </div>
+        <div class="Alliance">
+             <h2 id="Alliance">RED</h2>
+
+        </div>
+    </div>
+    <div class="main">
+        <div class="teams">
+            <div class="teamA">
+                 <h1 class="team">102</h1>
+                <div>
+                  <div id="0" class="table0" onclick="changeImage(0,0)">
+                        Robot is in Auto Zone
+                    </div>
+                    <div id="1" class="table0" onclick="changeImage(1,1)">
+                        Tote in Auto zone
+                    </div>
+                    <div class="USSR">
+                        <div id="2" class="Russia" onclick="changeImage(2,2)">
+                            1
+                        </div>
+                        <div id="3" class="Russia" onclick="changeImage(3,2)">
+                            2
+                        </div>
+                        <div id="4" class="Russia" onclick="changeImage(4,2)">
+                            3
+                        </div>
+                    </div>
+                    <div id="5" class="table0" onclick="changeImage(5,3)">
+                        Stacked Totes
+                    </div>
+                    <div id="6" class="table0" onclick="changeImage(6,4)">
+                        Containers in Auto
+                    </div>
+                </div>
+            </div>
+            <div class="teamB">
+                 <h1 class="team">75</h1>
+
+                <div>
+                    <div id="7" class="table1" onclick="changeImage(7,5)">
+                        Robot is in Auto Zone
+                    </div>
+                    <div id="8" class="table1" onclick="changeImage(8,6)">
+                        Tote in Auto zone
+                    </div>
+                  <div class="USSR">
+                    <div id="9" class="Russia" onclick="changeImage(9,7)">
+                        1
+                    </div>
+                    <div id="10" class="Russia" onclick="changeImage(10,7)">
+                        2
+                    </div>
+                    <div id="11" class="Russia" onclick="changeImage(11,7)">
+                        3
+                    </div>
+                  </div>
+                    <div id="12" class="table1" onclick="changeImage(12,8)">
+                        Stacked Totes
+                    </div>
+                    <div id="13" class="table1" onclick="changeImage(13,9)">
+                        Containers in Auto
+                    </div>
+                </div>
+            </div>
+            <div class="teamC">
+                 <h1 class="team">303</h1>
+
+                <div>
+                    <div id="14" class="table2" onclick="changeImage(14,10)">
+                        Robot is in Auto Zone
+                    </div>
+                    <div id="15" class="table2" onclick="changeImage(15,11)">
+                        Tote in Auto zone
+                    </div>
+                  <div class="USSR">
+                    <div id="16" class="Russia" onclick="changeImage(16,12)">
+                        1
+                    </div>
+                    <div id="17" name="team3" class="Russia" onclick="changeImage(17,12)">
+                        2
+                    </div>
+                    <div id="18" name="team3" class="Russia" onclick="changeImage(18,12)">
+                        3
+                    </div>
+                  </div>
+                    <div id="19" class="table2" onclick="changeImage(19,13)">
+                        Stacked Totes
+                    </div>
+                    <div id="20" class="table2" onclick="changeImage(20,14)">
+                        Containers in Auto
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form action="Teleop.html">
+        <input class="bigButton" type="submit" name="Next" value="Next">
+    </form>
+</div>
+<script>var groupHighlights = new Array(4);
+
+function changeImage(id, group) {
+  
+    if (groupHighlights[group] === undefined) {
+        groupHighlights[group] = id;
+        highlightCheck(id, group, true);
+    } else {
+        if (groupHighlights[group] === id) {
+            highlightCheck(id, group, false);
+            groupHighlights[group] = undefined;
+        } else {
+            highlightCheck(groupHighlights[group], group, false);
+            groupHighlights[group] = id;
+            highlightCheck(id, group, true);
+        }
+    } 
+  
+  
+  
+  
+  
+}
+
+function highlightCheck(id, group, isHighlighting) {
+  if(isHighlighting===true){
+    setTextHighlight(id, "#f7b448");
+  }else{
+    setTextHighlight(id, "#8a8a8a");
+  }
+}
+
+function setTextHighlight(id, color) {
+  
+    document.getElementById(id).style.background = color;
+  
+}
+
+</script></body>

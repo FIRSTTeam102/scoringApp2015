@@ -1,4 +1,4 @@
-
+<!-- BEGIN main -->
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,8 +8,7 @@
 <!--    <link rel="stylesheet" href="stylesheet.css" /> -->
 	<style type="text/css">
 	body {
-	background-image: url("http://www.team102.com/2015Dev/Geary.jpg");
-	background-repeat: repeat-y;
+	background-image: url("http://www.team102.org/2015Dev/Geary.jpg");
 	}
 	.header{
 	display: flex;
@@ -18,35 +17,40 @@
 	align-content: space-between;
 	}
 	.nav {
-	 width: 200px;
-    padding: 25px;
+	 width: 40px;
+    padding: 0 10px 17px 25px;
     border: 25px;
-    margin: 0 15 25 0px;
+    margin: 15px 15px 15px 15px;
 	order: 2;
 	align-self: flex-end;
 	flex-grow: 5;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-weight: 300;
 	color: d5d5d8;
+	background-color: #222;
+	border-radius: 16px;
 	}
 	.logo {
 	 width: 300px;
-    padding: 25px;
+    padding: 5px;
     border: 25px;
-    margin: 0 15 25 0px;
+    margin: 0 0 0 0px;
 	order: 1;
 	flex-grow: 1;
 	font-size: 21px;
-	color: d5d5d8;
+	color: e6e6e6;
 	}
 	.bigButton {
 	background-color: #F7b448;
 	color: 151a2e;
-	height: 60 px;
+	height: 65 px;
 	width: 102 px;
 	font-size: 20px;
 	margin-top: 17px;
+	border-color: #ff7e00;
 	}
+
+
 	
 	</style>
     <!--[if IE]>
@@ -62,12 +66,15 @@
     <div id="page">
         <div class="header">
 			<div class="logo">
-			<img src="favicon.ico" style="float: right; padding: 3px 15px 40px 10px;"/>
-			<form id="indexForm" action="index.php" method="POST">
+              <img src="http://www.team102.org/2015Dev/favicon.ico" style="float: right; padding: 3px 15px 20px 10px;" onclick="changeImage()"/>
+			<div id="indexForm" class="team102fun" onclick="changeImage()">
 				<div id="team102" style="text-align: right">FIRST Team 102</div>
 				<div style="text-align: right">The Gearheads</div>
 				<div style="text-align: right">Somerville High School, NJ</div>
 			</div>
+		    </div>
+
+
 				
 				
                 <div class="nav">
@@ -83,8 +90,27 @@
 					Alliances that have been formed for the final matches
 					<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnLighterApp" value="Alliance Color Lighter" /></div>
 					Illuminate screen in blue or red to show support for your alliance!
+					<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnScoringApp" value="Team 102 Scoring App" /></div>
+					Link to the Gearheads' scoring app
                 </div>
 			</form>
         
     </div>
+		<script>
+	var groupHighlights = [false];
+
+function changeImage() {
+
+        if (groupHighlights[0]===false) {
+          document.getElementById("indexForm").style.background = "#ff8a19";
+          document.getElementById("indexForm").style.color = "black";
+          groupHighlights[0]=true;
+          } else {
+          document.getElementById("indexForm").style.background = "";
+          document.getElementById("indexForm").style.color = "white";
+          groupHighlights[0]=false;
+        }
+    } 
+		</script>
 </body>
+<!-- END main -->

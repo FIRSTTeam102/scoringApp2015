@@ -1,0 +1,67 @@
+﻿body
+{
+	background-image: url("http://www.team102.org/2015Dev/Geary.jpg");
+}
+.body/*Red*/ {
+  font-size: 2.1em; 
+  padding: 0; 
+  margin: 0;
+  font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+  background: #ff5e5e; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #ff5e5e 0%, #ff3838 29%, #ff2121 50%, #ff0000 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#ff5e5e), color-stop(29%,#ff3838), color-stop(50%,#ff2121), color-stop(100%,#ff0000)); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover, #ff5e5e 0%,#ff3838 29%,#ff2121 50%,#ff0000 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover, #ff5e5e 0%,#ff3838 29%,#ff2121 50%,#ff0000 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover, #ff5e5e 0%,#ff3838 29%,#ff2121 50%,#ff0000 100%); /* IE10+ */
+  background: radial-gradient(ellipse at center, #ff5e5e 0%,#ff3838 29%,#ff2121 50%,#ff0000 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5e5e', endColorstr='#ff0000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+/*.bodyBlue{
+  font-size: 2.1em; 
+  padding: 0; 
+  margin: 0;
+  font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+  background: #7c87cc; /* Old browsers */
+/*  background: -moz-radial-gradient(center, ellipse cover,  #7c87cc 0%, #3f54cc 50%, #4153cc 51%, #142bcc 100%); /* FF3.6+ */
+/*  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#7c87cc), color-stop(50%,#3f54cc), color-stop(51%,#4153cc), color-stop(100%,#142bcc)); /* Chrome,Safari4+ */
+/*  background: -webkit-radial-gradient(center, ellipse cover,  #7c87cc 0%,#3f54cc 50%,#4153cc 51%,#142bcc 100%); /* Chrome10+,Safari5.1+ */
+/*  background: -o-radial-gradient(center, ellipse cover,  #7c87cc 0%,#3f54cc 50%,#4153cc 51%,#142bcc 100%); /* Opera 12+ */
+/*  background: -ms-radial-gradient(center, ellipse cover,  #7c87cc 0%,#3f54cc 50%,#4153cc 51%,#142bcc 100%); /* IE10+ */
+/*  background: radial-gradient(ellipse at center,  #7c87cc 0%,#3f54cc 50%,#4153cc 51%,#142bcc 100%); /* W3C */
+/*  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7c87cc', endColorstr='#142bcc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+/*}*/
+.totes {
+    width: 100px;
+	padding: 0px;
+}
+
+.container {
+    width: 80px;
+	padding: 0px
+}
+.team{
+  margin: 5px 5px 5px 5px;
+  color: white;
+  background-color: #3b444b;
+  border: 10px ridge #3b444b;
+  text-decoration: underline;
+  }
+div{
+  color: #F5F5F5;
+}
+.main {
+  margin: 10px 10px 10px 10px;
+}
+.match {
+  border: 10px ridge #8C6565;
+  margin: 5px;
+  background-color: #383838;
+  color: white;
+}
+title {
+  border: 10px ridge #8C6565;
+  margin: 5px; 
+  background-color: #383838; 
+  color:  white;g-right: 10px;
+}
+

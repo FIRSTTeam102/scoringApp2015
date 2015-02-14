@@ -1,5 +1,5 @@
 ﻿body {
-    background: #222;
+	background-image: url("http://www.team102.org/2015Dev/Geary.jpg");
     margin: 0 auto;
     font-size: 1.3em;
     color: white;
@@ -94,42 +94,16 @@ body div {
 	text-align:right; 
 	padding: 3px 2px;
 }
-
-.totes input{
-    margin:0;padding:0;
-    -webkit-appearance:none;
-       -moz-appearance:none;
-            appearance:none;
+.blue {
+    background-color: blue;
+    color: white;
 }
-.toteImage{background-image:url(http://i.imgur.com/lXzJ1eB.png);}
-
-.totes input:active +.possibleTotes{opacity: .9;}
-.totes input:checked +.possibleTotes{
-    -webkit-filter: none;
-       -moz-filter: none;
-            filter: none;
+.white {
+    background-color: white;
+    color: black;
 }
-.possibleTotes{
-    cursor:pointer;
-    background-size:contain;
-    background-repeat:no-repeat;
-    display:inline-block;
-    width:100px;height:70px;
-    -webkit-transition: all 100ms ease-in;
-       -moz-transition: all 100ms ease-in;
-            transition: all 100ms ease-in;
-    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
-       -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
-            filter: brightness(1.8) grayscale(1) opacity(.7);
-}
-.possibleTotes:hover{
-    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
-       -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
-            filter: brightness(1.2) grayscale(.5) opacity(.9);
-}
-
-.container {
-    background-color: #222;
+.red {
+    background-color: red;
     color: white;
 }
 input[type=checkbox], input[type=radio] {

@@ -1,294 +1,56 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>MAR 10-12 Apr TeleOp</title>
+    <title>TeleOp</title>
     <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
-	<script type='text/javascript' src='jqueryui/js/jquery-1.10.2.js'></script>
+	<script type='text/javascript' src='js/core.js'></script>
     <link rel="stylesheet" href="stylesheet.css" />
     <!--[if IE]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-	<script type='text/javascript'>//<![CDATA[ 
-	var groupHighlights = new Array(2);
-var extension;
-function changeImage(id, group) {
-  if(group===1){
-    extension="tote";
-  }else{
-    extension="yellowtote";
-  }
-   if (groupHighlights[group] === undefined) {
-           groupHighlights[group] = id;
-           setHighlight(id, group);
-       } else {
-           if (groupHighlights[group] === id) {
-               groupHighlights[group] = undefined;
-               removeHighlight(id, group);
-           } else {  
-             removeHighlight(groupHighlights[group], group);
-             groupHighlights[group] = id;
-             setHighlight(id, group);
-
-           }
-       }
-}
-
-function removeHighlight(id, group) {
-   document.getElementById(id).innerHTML = "<img src='http://www.team102.com/2015/resources/images/"+extension+"dark.png' height='35' width='52.5' onclick='changeImage("+id+","+group+")'/>";
-}
-
-function setHighlight(id, group) {
-   document.getElementById(id).innerHTML = "<img src='http://www.team102.com/2015/resources/images/"+extension+"light.png' height='35' width='52.5' onclick='changeImage("+id+","+group+")'/>";
-}
-		$(window).load(function(){
-			calcScore();
-			
-			// Event handler to recalculate the score whenever an input control changes.
-			$( "input" ).change(function() { calcScore(); })
-
-			// Event handler to allow radio buttons to be turned off if they are mistakenly turned on.
-			$("input[type='radio']").click(function()
-			{
-			  var previousValue = $(this).attr('previousValue');
-			  var name = $(this).attr('name');
-			
-			  if (previousValue == 'checked')
-			  {
-			    $(this).removeAttr('checked');
-			    $(this).attr('previousValue', false);
-			  }
-			  else
-			  {
-			    $("input[name="+name+"]:radio").attr('previousValue', false);
-			    $(this).attr('previousValue', 'checked');
-			  }
-			  calcScore();
-			});
-		});
-
-		// Function to calculate the score.
-		function calcScore()
-		{
-			enableNextCycle = false;
-			total = 0;
-			goalPoints = 0;
-			
-			// The idea: set the zone to 1 if any team assists in that zone.  Set teams to 1 if that teams assists.
-			// The number of assists is then min(sum(zones), sum(teams))
-			var zones = new Array();
-			zones[0] = 0;
-			zones[1] = 0;
-			zones[2] = 0;
-			var teams = new Array();
-			teams[0] = 0;
-			teams[1] = 0;
-			teams[2] = 0;
-							if( $( "#chkTeam1Offense" ).prop( "checked" ) )
-				{
-					zones[0] = 1;
-					teams[1 - 1] = 1;
-				}
-				if( $( "#chkTeam1White" ).prop( "checked" ) )
-				{
-					zones[1] = 1;
-					teams[1 - 1] = 1;
-				}
-				if( $( "#chkTeam1Defense" ).prop( "checked" ) )
-				{
-					zones[2] = 1;
-					teams[1 - 1] = 1;
-				}
-
-				if( $( "#rdoLoGoal1" ).prop( "checked" ) )
-				{
-					goalPoints = 1;
-					enableNextCycle = true;
-				}
-				else if( $( "#rdoHiGoal1" ).prop( "checked" ) )
-				{
-					goalPoints = 10;
-					enableNextCycle = true;
-				}
-				if( $( "#rdoTruss1" ).prop( "checked" ) )
-				{
-					total += 10;
-				}
-				if( $( "#rdoCatch1" ).prop( "checked" ) )
-				{
-					total += 10;
-				}
-							if( $( "#chkTeam2Offense" ).prop( "checked" ) )
-				{
-					zones[0] = 1;
-					teams[2 - 1] = 1;
-				}
-				if( $( "#chkTeam2White" ).prop( "checked" ) )
-				{
-					zones[1] = 1;
-					teams[2 - 1] = 1;
-				}
-				if( $( "#chkTeam2Defense" ).prop( "checked" ) )
-				{
-					zones[2] = 1;
-					teams[2 - 1] = 1;
-				}
-
-				if( $( "#rdoLoGoal2" ).prop( "checked" ) )
-				{
-					goalPoints = 1;
-					enableNextCycle = true;
-				}
-				else if( $( "#rdoHiGoal2" ).prop( "checked" ) )
-				{
-					goalPoints = 10;
-					enableNextCycle = true;
-				}
-				if( $( "#rdoTruss2" ).prop( "checked" ) )
-				{
-					total += 10;
-				}
-				if( $( "#rdoCatch2" ).prop( "checked" ) )
-				{
-					total += 10;
-				}
-							if( $( "#chkTeam3Offense" ).prop( "checked" ) )
-				{
-					zones[0] = 1;
-					teams[3 - 1] = 1;
-				}
-				if( $( "#chkTeam3White" ).prop( "checked" ) )
-				{
-					zones[1] = 1;
-					teams[3 - 1] = 1;
-				}
-				if( $( "#chkTeam3Defense" ).prop( "checked" ) )
-				{
-					zones[2] = 1;
-					teams[3 - 1] = 1;
-				}
-
-				if( $( "#rdoLoGoal3" ).prop( "checked" ) )
-				{
-					goalPoints = 1;
-					enableNextCycle = true;
-				}
-				else if( $( "#rdoHiGoal3" ).prop( "checked" ) )
-				{
-					goalPoints = 10;
-					enableNextCycle = true;
-				}
-				if( $( "#rdoTruss3" ).prop( "checked" ) )
-				{
-					total += 10;
-				}
-				if( $( "#rdoCatch3" ).prop( "checked" ) )
-				{
-					total += 10;
-				}
-			 
-			assistPts = 0;
-			numTeamsAssisting = teams[0] + teams[1] + teams[2]
-			if(goalPoints  != 0)
-			{
-				total += goalPoints;
-				assists = Math.min(zones[0] + zones[1] + zones[2], numTeamsAssisting);
-				if(assists == 2)
-				{
-					assistPts = 10;
-					total += assistPts;
-				}
-				else if(assists == 3)
-				{
-					assistPts = 30;
-					total += assistPts;
-				}
-			}
-			// Figure out each team's contribution to the assist points.
-			if(teams[0] == 1)
-				$("#hidTeam1AssistPtsID").val(assistPts / numTeamsAssisting);
-			if(teams[1] == 1)
-				$("#hidTeam2AssistPtsID").val(assistPts / numTeamsAssisting);
-			if(teams[2] == 1)
-				$("#hidTeam3AssistPtsID").val(assistPts / numTeamsAssisting);
-				
-			$("#Score").text("Score: " + total);
-			$("#scoreField").val(total);
-			
-			// Figure out if the Next Cycle button should be enabled.
-			$("#btnNextId").prop("disabled", !enableNextCycle);
-		};
-	//]]>
-	</script>
 </head>
-<body class="no-js">
+<body class="body"> <!--{AllianceColor}-->
     <div id="page">
         <div class="header">
-            <div id="competition">MAR 10-12 Apr MJP</div>
-            <div id="match">Match 82 - 6:26 PM - RED</div>
+            <div id="competition">{competionNumber}</div>
+            <div id="match">{matchId}</div>
         </div>
+		<body>
+	<table style="border: none"
+	    <tr id="team">
+		<td class="team" id="39" onclick="changeImage(39,2)">
+		  <h1 class="teamNumber" >{team1}</h1>
+		</td>
+		<td class="team" id="40" onclick="changeImage(40,2)">
+		  <h1 class="teamNumber" >{team2}</h1>
+		</td>
+		<td class="team" id="41" onclick="changeImage(41,2)">
+		  <h1 class="teamNumber" >{team3}</h1>
+		</td>
+	      </tr>
+	</table>
+	<table>
+	    <div id="totes" class="totes">
+			<tr id="row0"></tr>
+			<tr id="row1"></tr>
+			<tr id="row2"></tr>
+			<tr id="row3"></tr>
+			<tr id="row4"></tr>
+			<tr id="row5"></tr></div>
+	    <tr><td id="37"><img class="container" id="37" src="http://www.team102.org/2015/resources/images/containergrey.png" onclick="changeImage(37, 1)"/></td>
+	    <td id="38"><img class="container" id="38" src="http://www.team102.org/2015/resources/images/containerlittergrey.png" onclick="changeImage(38, 1)"/></td>
+	    </tr>
+	</table>
+<script type="text/javascript" src="js/core.js"></script>
+</body>
 
         <form id="cycleForm" action="teleop.php" method="POST">
                 <div class="controls">
-					<input type="radio" name="rdoTeam" id="rdoTeam1" value="Team-1" />
-						<label for="rdoTeam1">1</label>
-					<input type="radio" name="rdoTeam" id="rdoTeam2" value="Team-2" />
-						<label for="rdoTeam2">2</label>
-					<input type="radio" name="rdoTeam" id="rdoTeam3" value="Team-3" />
-						<label for="rdoTeam3">3</label>
-                    <div id="Container" class="container">
-                        <input type="radio" name="rdoContainer" id="rdoContainer" value="Container-Points" />
-							<label for="rdoContainer">Container</label>
-						<input type="radio" name="rdoContainer" id="rdoLitter" value="Litter-Points" />
-							<label for="rdoLitter">Litter</label>
-                    </div>
-                    <div id="Totes" class="totes">
-						<table>
-							<tr><td><input type="radio" name="rdoTotes" id="rdoStack_0_6" value="Tote-Points"></td>
-									<label class="possibleTotes" for rdoStack_0_6"></label> 
-							    <td><input type="radio" name="rdoTotes" id="rdoStack_1_6" value="Tote-Points"></td>
-							    <td><input type="radio" name="rdoTotes" id="rdoStack_2_6" value="Tote-Points"></td>
-							    <td><input type="radio" name="rdoTotes" id="rdoStack_3_6" value="Tote-Points"></td>
-								<td><input type="radio" name="rdoTotes" id="rdoStack_4_6" value="Tote-Points"></td>
-								<td><input type="radio" name="rdoTotes" id="rdoStack_5_6" value="Tote-Points"></td></tr>
-							<tr><td><input type="radio" name="rdoTotes" id="rdoStack_0_5" value="Tote-Points"></td>
-							    <td><input type="radio" name="rdoTotes" id="rdoStack_1_5" value="Tote-Points"></td>
-							    <td><input type="radio" name="rdoTotes" id="rdoStack_2_5" value="Tote-Points"></td>
-							    <td><input type="radio" name="rdoTotes" id="rdoStack_3_5" value="Tote-Points"></td>
-								<td><input type="radio" name="rdoTotes" id="rdoStack_4_5" value="Tote-Points"></td>
-								<td><img src="http://team102.com/2015/resources/images/totelight.png" alt="Tote" height="35" width="52.5"></td></tr>
-							<tr><td><input type="radio" name="rdoTotes" id="rdoStack_0_4" value="Tote-Points"></td>
-							    <td><input type="radio" name="rdoTotes" id="rdoStack_1_4" value="Tote-Points"></td>
-							    <td><input type="radio" name="rdoTotes" id="rdoStack_2_4" value="Tote-Points"></td>
-							    <td><input type="radio" name="rdoTotes" id="rdoStack_3_4" value="Tote-Points"></td>
-								<td><img src="http://team102.com/2015/resources/images/totelight.png" alt="Tote" height="35" width="52.5"></td>
-								<td><img src="http://team102.com/2015/resources/images/totelight.png" alt="Tote" height="35" width="52.5"></td></tr>
-							<tr><td><input type="radio" name="rdoTotes" id="rdoStack_0_3" value="Tote-Points"></td>
-							    <td><input type="radio" name="rdoTotes" id="rdoStack_1_3" value="Tote-Points"></td>
-							    <td><input type="radio" name="rdoTotes" id="rdoStack_2_3" value="Tote-Points"></td>
-							    <td><img src="http://team102.com/2015/resources/images/totelight.png" alt="Tote" height="35" width="52.5"></td>
-								<td><img src="http://team102.com/2015/resources/images/totelight.png" alt="Tote" height="35" width="52.5"></td>
-								<td><img src="http://team102.com/2015/resources/images/totelight.png" alt="Tote" height="35" width="52.5"></td></tr>
-							<tr><td><input type="radio" name="rdoTotes" id="rdoStack_0_2" value="Tote-Points"></td>
-							    <td><input type="radio" name="rdoTotes" id="rdoStack_1_2" value="Tote-Points"></td>
-							    <td><img src="http://team102.com/2015/resources/images/totelight.png" alt="Tote" height="35" width="52.5"></td>
-							    <td><img src="http://team102.com/2015/resources/images/totelight.png" alt="Tote" height="35" width="52.5"></td>
-								<td><img src="http://team102.com/2015/resources/images/totelight.png" alt="Tote" height="35" width="52.5"></td>
-								<td><img src="http://team102.com/2015/resources/images/totelight.png" alt="Tote" height="35" width="52.5"></td></tr>
-							<tr><td><input type="radio" name="rdoTotes" id="rdoStack_0_1" value="Tote-Points"></td>
-							    <td><img src="http://team102.com/2015/resources/images/totelight.png" alt="Tote" height="35" width="52.5"></td>
-							    <td><img src="http://team102.com/2015/resources/images/totelight.png" alt="Tote" height="35" width="52.5"></td>
-							    <td><img src="http://team102.com/2015/resources/images/totelight.png" alt="Tote" height="35" width="52.5"></td>
-								<td><img src="http://team102.com/2015/resources/images/totelight.png" alt="Tote" height="35" width="52.5"></td>
-								<td><img src="http://team102.com/2015/resources/images/totelight.png" alt="Tote" height="35" width="52.5"></td></tr>
-						</table>
-                    </div>
-                </div>
-            </div>
-		            <div style="clear:both;"></div>
+					
             <div class="footer">
                 <div id="Score" class="red"></div><input type="hidden" name="scoreFieldName" id="scoreField" />
                 <div id="nav">
-                    <input type="submit" name="btnNext" value="Next Cycle" id="btnNextId" disabled/>
+                    <input type="submit" name="btnNext" value="Next Cycle" id="btnNextId">
                     <input type="submit" name="btnDone" value="Done" />
                 </div>
             </div>
