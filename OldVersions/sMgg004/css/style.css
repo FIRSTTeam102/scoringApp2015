@@ -1,0 +1,87 @@
+body {
+  font-size: 2em; 
+  padding: 0; 
+  margin: 0;
+  background-color: #222;
+  }
+p{
+  color: white;
+}
+.team{
+  color: black;
+  margin-right: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  -webkit-margin-before: 10px;
+  -webkit-margin-after: 10px;
+}
+div{
+  color: #F5F5F5;
+}
+.main {
+  margin: 10px 10px 10px 10px;
+}
+.Alliance {
+  border: 10px ridge #8C6565;
+  margin: 5px; background-color: #BA0B0B;
+  text-decoration: underline;
+  color: black;
+}
+.match {
+  border: 10px ridge #8C6565;
+  margin: 5px;
+  background-color: #383838;
+  color: white;
+}
+.title {
+  border: 10px ridge #8C6565;
+  margin: 5px; 
+  background-color: #383838; 
+  color:  white;
+}
+.top {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+ } 
+.teams {
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ }
+.teamABC{
+  margin: 10px 25px 10px 25px;
+  padding-left: 10px;
+  background-color: #8a8a8a;
+  border: 10px ridge #8C6565;
+}
+.bigButton {
+ background-color: #f7b448;
+ color: #000000;
+ width: 180px;
+ height: 80px;
+ font-size: 60px;
+ border-width: 5px;
+ border-color: #8a8a8a;
+  margin: 0 35px 0 35px;
+ }
+.truemain {
+justify-content: center;
+}
+.table{
+  background-color: #21211E;
+  margin: 0 10px 10px 0;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.USSR { display:table; margin: 0 0 10px 0;}
+.Russia {
+  display:table-cell;
+  vertical-align:top;
+  background-color: #21211E;
+  text-align: center;
+  width:  101px;
+}

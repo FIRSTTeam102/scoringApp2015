@@ -9,14 +9,10 @@
 		exit();
 	}
 	
-	require_once "php/HTML/Template/IT.php";
-	$tpl = new HTML_Template_IT("./templates");
-	$tpl->loadTemplatefile("Autonomous.html", true, true);
-	
 	// Connect to the database.
 	$link = mysql_connect('team102.org:3306', 'team102_webuser', $_SESSION['password']);
 	
-	if (!mysql_select_db('team102_2015', $link)) {
+	if (!mysql_select_db('team102_2014', $link)) {
     		echo sprintf('Could not select database, Err: %s', mysql_error());
     		exit;
 	}
@@ -61,7 +57,7 @@
 	{
 		$_SESSION['match_number'] = $match_number;
 		// Update the match with the user's initials
-		for($team = 1; $team <= 3; $team++)
+				for($team = 1; $team <= 3; $team++)
 		{
 			if($team == 1)
 			{
@@ -97,12 +93,12 @@
 //		mysql_query("START TRANSACTION;", $link);
 		// No validations are necessary.
 		$sql = sprintf("update match_teams
-							set auto_robot = '%s', auto_num_totes = '%s', auto_stack_totes = '%s', auto_containers = '%s'
+							set has_ball = '%s', auto_goal = '%s', auto_goal_hot = '%s', auto_mobility = '%s'
 							where tournament_id = '%s' and match_number = %s and team_number = %s"
-							, isset ($_POST['team1robot']) ? "Y" : "N"
-							, $_POST['team1totevalue']
-							, $_POST['team1stackvalue']
-							, $_POST['team1containervalue']
+							, isset($_POST['chkTeam1HasBallName']) ? "Y" : "N"
+							, $_POST['rdoScore1']
+							, isset($_POST['chkTeam1HotName']) ? "Y" : "N"
+							, isset($_POST['chkTeam1MobilityName']) ? "Y" : "N"
 							, $_SESSION['tournament']->ID
 							, $match_number
 							, $_SESSION['match']->team1
@@ -113,12 +109,12 @@
 //		echo $sql;
 //		echo '<br>';
 		$sql = sprintf("update match_teams
-							set auto_robot = '%s', auto_num_totes = '%s', auto_stack_totes = '%s', auto_containers = '%s'
+							set has_ball = '%s', auto_goal = '%s', auto_goal_hot = '%s', auto_mobility = '%s'
 							where tournament_id = '%s' and match_number = %s and team_number = %s"
-							, isset ($_POST['team2robot']) ? "Y" : "N"
-							, $_POST['team2totevalue']
-							, $_POST['team2stackvalue']
-							, $_POST['team2containervalue']
+							, isset($_POST['chkTeam2HasBallName']) ? "Y" : "N"
+							, $_POST['rdoScore2']
+							, isset($_POST['chkTeam2HotName']) ? "Y" : "N"
+							, isset($_POST['chkTeam2MobilityName']) ? "Y" : "N"
 							, $_SESSION['tournament']->ID
 							, $match_number
 							, $_SESSION['match']->team2
@@ -129,12 +125,12 @@
 //		echo $sql;
 //		echo '<br>';
 		$sql = sprintf("update match_teams
-							set auto_robot = '%s', auto_num_totes = '%s', auto_stack_totes = '%s', auto_containers = '%s'
+							set has_ball = '%s', auto_goal = '%s', auto_goal_hot = '%s', auto_mobility = '%s'
 							where tournament_id = '%s' and match_number = %s and team_number = %s"
-							, isset ($_POST['team3robot']) ? "Y" : "N"
-							, $_POST['team3totevalue']
-							, $_POST['team3stackvalue']
-							, $_POST['team3containervalue']
+							, isset($_POST['chkTeam3HasBallName']) ? "Y" : "N"
+							, $_POST['rdoScore3']
+							, isset($_POST['chkTeam3HotName']) ? "Y" : "N"
+							, isset($_POST['chkTeam3MobilityName']) ? "Y" : "N"
 							, $_SESSION['tournament']->ID
 							, $match_number
 							, $_SESSION['match']->team3

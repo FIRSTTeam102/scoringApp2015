@@ -1,0 +1,148 @@
+If ((team1auto_robot ==1)
+&&(team2auto_robot ==1)
+&&(team3auto_robot ==1))
+{
+$score1 = 4
+}
+else {$score1 = 0}
+
+If (team1auto_num_totes = 3)
+{
+$score2 = 1
+}
+else {$score2 = 0}
+
+If (team2_num_totes = 3)
+{
+$score3 = 1
+}
+else {$score3 = 0}
+
+If (team3_num_totes = 3)
+{
+$score4 = 1
+}
+else {$score4 = 0}
+
+$score5 = $score2 + $score3 + $score4
+
+If ($score5 >= 1)
+{
+$score6 = 6
+}
+else {$score6 = 0}
+
+If ($score5 = 2)
+{
+$score7 = 6
+}
+
+If (team1auto_stack_totes = 3)
+{
+$score8 = 1
+}
+else {$score8 = 0}
+
+If (team2auto_stack_totes = 3)
+{
+$score9 = 1
+}
+else {$score9 = 0}
+
+If (team3auto_stack_totes = 3)
+{
+$score10 = 1
+}
+else {$score10 = 0}
+
+$score11 = $score8 + $score9 + $score10
+
+If ($score11 = 0)
+{
+$score12 = 0
+}
+
+If ($score11 = 1)
+{
+$score12 = 14
+}
+
+If ($score11 = 2)
+{
+$score12 = 28
+}
+
+$score13 = $score6 + $score7
+
+$score14 = $score12 + $score13
+
+$score15 = $score1 + $score14
+
+If (team1auto_containers = 0)
+{
+$score16 = 0
+}
+
+If (team1auto_containers = 1)
+{
+$score16 = 1
+}
+
+If (team1auto_containers = 2)
+{
+$score16 = 2
+}
+
+If (team1auto_containers = 3)
+{
+$score16 = 3
+}
+
+If (team2auto_containers = 0)
+{
+$score17 = 0
+}
+
+If (team2auto_containers = 1)
+{
+$score17 = 1
+}
+
+If (team2auto_containers = 2)
+{
+$score17 = 2
+}
+
+If (team2auto_containers = 3)
+{
+$score17 = 3
+}
+
+If (team3auto_containers = 0)
+{
+$score18 = 0
+}
+
+If (team3auto_containers = 1)
+{
+$score18 = 1
+}
+
+If (team1auto_containers = 2)
+{
+$score18 = 2
+}
+
+If (team1auto_containers = 3)
+{
+$score18 = 3
+}
+
+$score19 = $score16 + $score17 + $score18
+
+If ($score19 >= 3)
+{
+$score20 = 8
+}
+
+$score21 = $score15 + $score20

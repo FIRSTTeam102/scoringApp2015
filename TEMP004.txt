@@ -1,0 +1,30 @@
+"update match_teams
+	set auto_robot = '%s', auto_num_totes = '%s', auto_stack_totes = '%s', auto_containers = '%s'
+	where tournament_id = '%s' and match_number = %s and team_number = %s"
+	, isset ($_POST['team1robot']) ? "Y" : "N"
+	, $_POST['team1totevalue']
+	, $_POST['team1stackvalue']
+	, $_POST['team1containervalue']
+	, $_SESSION['tournament']->ID
+	, $match_number
+	, $_SESSION['match']->team1
+"update match_teams
+	set auto_robot = '%s', auto_num_totes = '%s', auto_stack_totes = '%s', auto_containers = '%s'
+	where tournament_id = '%s' and match_number = %s and team_number = %s"
+	, isset ($_POST['team2robot']) ? "Y" : "N"
+	, $_POST['team2totevalue']
+	, $_POST['team2stackvalue']
+	, $_POST['team2containervalue']
+	, $_SESSION['tournament']->ID
+	, $match_number
+	, $_SESSION['match']->team2
+"update match_teams
+	set auto_robot = '%s', auto_num_totes = '%s', auto_stack_totes = '%s', auto_containers = '%s'
+	where tournament_id = '%s' and match_number = %s and team_number = %s"
+	, isset ($_POST['team3robot']) ? "Y" : "N"
+	, $_POST['team3totevalue']
+	, $_POST['team3stackvalue']
+	, $_POST['team3containervalue']
+	, $_SESSION['tournament']->ID
+	, $match_number
+	, $_SESSION['match']->team3

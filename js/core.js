@@ -1,7 +1,6 @@
 createGrey();
 
 function createGrey() {
-    var createCounter = 0;
     for (var i = 0; i < 6; i++) {
       
         for (var j = 0; j < 6; j++) {
@@ -10,18 +9,38 @@ function createGrey() {
           
             if (i + j >= 6) {
               
-                document.getElementById("row" + i).innerHTML = document.getElementById("row" + i).innerHTML + "<td id='" + identity + "';> <img class='totes' src='http://www.team102.org/2015/resources/images/totelight.png'</td>";
+                document.getElementById("row" + i).innerHTML = document.getElementById("row" + i).innerHTML + "<td id='" + identity + "';> <img class='totes' src='http://www.team102.org/2015/resources/images/totegrey.png'</td>";
               
             } else {
               
-                document.getElementById("row" + i).innerHTML = document.getElementById("row" + i).innerHTML + "<td id='" + identity + "';> <img class='totes' src='http://www.team102.org/2015/resources/images/totegrey.png' onclick='changeImage(" + identity + ",0)'/></td>";
+                document.getElementById("row" + i).innerHTML = document.getElementById("row" + i).innerHTML + "<td id='" + identity + "';> <img class='totes' src='http://www.team102.org/2015/resources/images/totelight.png' onclick='changeImage(" + identity + ",0)'/></td>";
+
+            }
+        }
+    }
+	createYellow();
+}
+function createYellow() {
+    for (var i = 0; i < 4; i++) {
+      
+        for (var j = 0; j < 4; j++) {
+          
+            var identity = (i * 4 + j);
+          
+            if (i + j >= 4) {
+              
+                document.getElementById("yellow" + i).innerHTML = document.getElementById("yellow" + i).innerHTML + "<td id='" + (identity+100)+ "';> <img class='totes' src='http://www.team102.org/2015/resources/images/yellowtotegrey.png'</td>";
+              
+            } else {
+              
+                document.getElementById("yellow" + i).innerHTML = document.getElementById("yellow" + i).innerHTML + "<td id='" + (identity+100)+ "';> <img class='totes' src='http://www.team102.org/2015/resources/images/yellowtotelight.png' onclick='changeImage(" + (identity+100) + ",3)'/></td>";
 
             }
         }
     }
 }
 
-var groupHighlights = new Array(3), startingHeight, endingHeight;
+var groupHighlights = new Array(4), greyStart, greyEnd, yellowStart, yellowEnd;
 
 function changeImage(id, group) {
   
@@ -63,13 +82,13 @@ function changeImage(id, group) {
 
 function removeHighlight(id, group) {
   
-    document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.replace("dark", "grey");
+    document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.replace("dark", "light");
   
 }
 
 function setHighlight(id, group) {
   
-    document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.replace("grey", "dark");
+    document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.replace("light", "dark");
   
 }
 
@@ -78,7 +97,7 @@ function highlightCheck(id, group, isHighlighting) {
     switch (group) {
         case 0:
         
-            lowerHighlight(id, group, isHighlighting);
+            lowerHighlight(id, group, isHighlighting, 6, 0);
             break;
         
         case 1:
@@ -102,31 +121,35 @@ function highlightCheck(id, group, isHighlighting) {
                 setTextHighlight(id, group, "#3b444b");
             }
             break;
+		case 3:
+		
+			lowerHighlight(id, group, isHighlighting, 4, 100);
+			break;
     }
 }
 
-function lowerHighlight(id, group, isHighlighting) {
-  
-    var row = Math.floor(id / 6),
-        column = id % 6,
+function lowerHighlight(id, group, isHighlighting, modifier, x) {
+	id = id-x;
+    var row = Math.floor(id / modifier),
+        column = id % modifier,
         end = false;
     do {
       
-        if (row + column >= 6) {
+        if (row + column >= modifier) {
           
             end = true;
           
         } else if (isHighlighting === true) {
           
-            setHighlight(id, group);
+            setHighlight((id+x), group);
             row++;
-            id = row * 6 + column;
+            id = row * modifier + column;
           
         } else {
           
-            removeHighlight(id, group);
+            removeHighlight((id+x), group);
             row++;
-            id = row * 6 + column;
+            id = row * modifier + column;
           
         }
       
