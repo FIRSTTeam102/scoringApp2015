@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <style type="text/css">
+body {
+    font-size:2em;
+    padding:0;
+    margin:0;
+    background-color:#222;
+	
+}
+p {
+    color:white;
+}
+.team {
+	background:#ff7e00;
+    color:black;
+    margin-right:10px;
+    padding-top:20px;
+    padding-bottom:20px;
+    -webkit-margin-before:10px;
+    -webkit-margin-after:10px;
+}
+div {
+    color:#f5f5f5;
+}
+.main {
+    margin:10px 10px 10px 10px;
+}
+.Alliance {
+    border:10px ridge #8c6565;
+    margin:5px;
+    background-color:#ba0b0b;
+    text-decoration:underline;
+    color:black;
+}
+.match {
+    border:10px ridge #8c6565;
+    margin:5px;
+    background-color:#383838;
+    color:white;
+}
+.title {
+    border:10px ridge #8c6565;
+    margin:5px;
+    background-color:#383838;
+    color:white;
+}
+.top {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    margin:auto;
+    justify-content:center;
+}
+.teams {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+	justify-content:center;
+}
+.teamABC {
+    margin:10px 25px 10px 25px;
+    padding-left:10px;
+    background-color:#8a8a8a;
+    border:10px ridge #8c6565;
+}
+.bigButton {
+    background-color:#f7b448;
+    color:#000;
+    width:180px;
+    height:80px;
+    font-size:60px;
+    border-width:5px;
+    border-color:#8a8a8a;
+    margin:0 35px 0 35px;
+}
+.truemain {
+    justify-content:center
+}
+.table {
+    background-color:#21211e;
+    margin:0 10px 10px 0;
+    padding-left:10px;
+    padding-right:10px;
+}
+.USSR {
+    display:table;
+    margin:0 0 10px 0;
+}
+.Russia {
+    display:table-cell;
+    vertical-align:top;
+    background-color:#21211e;
+    text-align:center;
+    width:102px;
+}
+</style>
+	  <title>Autonomous</title>
+   </head>
+   <body>
+      <p id=data></p>
+      <div id=truemain>
+         <div class=top>
+            <div class=match>
+               <h2 id=match>{tournamentTitle}</h2>
+            </div>
+            <div class=title>
+               <h2>Autonomous Mode</h2>
+            </div>
+            <div class=Alliance style=border-color:#de1409>
+               <h2 id=allianceColor>{allianceColor}</h2>
+            </div>
+         </div>
+         <div class=main>
+            <form id="AutonomousForm" action="autonomous.php" method="POST">
+				<div class=teams>
+				   <div class=teamABC style=border-color:#de1409>
+					  <h1 class=team>{team1}</h1>
+					  <div>
+						 <div id=0 class=table onclick=changeImage(0,0)>
+							Robot is in Auto Zone
+						 </div>
+						 <div id=1 class=table onclick=changeImage(1,1,undefined,2)>
+							Tote in Auto zone
+						 </div>
+						 <div class=USSR>
+							<div id=2 class=Russia onclick=changeImage(2,2,1)>1</div>
+							<div id=3 class=Russia onclick=changeImage(3,2,1)>2</div>
+							<div id=4 class=Russia onclick=changeImage(4,2,1)>3</div>
+						 </div>
+						 <div id=5 class=table onclick=changeImage(5,3,undefined,4)>
+							Stacked Totes
+						 </div>
+						 <div class=USSR>
+							<div id=6 class=Russia></div>
+							<div id=7 class=Russia onclick=changeImage(7,4,5)>2</div>
+							<div id=8 class=Russia onclick=changeImage(8,4,5)>3</div>
+						 </div>
+						 <div id=9 class=table onclick=changeImage(9,5,undefined,6)>
+							Containers in Auto
+						 </div>
+						 <div class=USSR>
+							<div id=10 class=Russia onclick=changeImage(10,6,9)>1</div>
+							<div id=11 class=Russia onclick=changeImage(11,6,9)>2</div>
+							<div id=12 class=Russia onclick=changeImage(12,6,9)>3</div>
+						 </div>
+					  </div>
+				   </div>
+				   <div class=teamABC style=border-color:#de1409>
+					  <h1 class=team>{team2}</h1>
+					  <div>
+						 <div id=13 class=table onclick=changeImage(13,10)>
+							Robot is in Auto Zone
+						 </div>
+						 <div id=14 class=table onclick=changeImage(14,11,undefined,12)>
+							Tote in Auto zone
+						 </div>
+						 <div class=USSR>
+							<div id=15 class=Russia onclick=changeImage(15,12,14)>1</div>
+							<div id=16 class=Russia onclick=changeImage(16,12,14)>2</div>
+							<div id=17 class=Russia onclick=changeImage(17,12,14)>3</div>
+						 </div>
+						 <div id=18 class=table onclick=changeImage(18,13,undefined,14)>
+							Stacked Totes
+						 </div>
+						 <div class=USSR>
+							<div id=19 class=Russia></div>
+							<div id=20 class=Russia onclick=changeImage(20,14,18)>2</div>
+							<div id=21 class=Russia onclick=changeImage(21,14,18)>3</div>
+						 </div>
+						 <div id=22 class=table onclick=changeImage(22,15,undefined,16)>
+							Containers in Auto
+						 </div>
+						 <div class=USSR>
+							<div id=23 class=Russia onclick=changeImage(23,16,22)>1</div>
+							<div id=24 class=Russia onclick=changeImage(24,16,22)>2</div>
+							<div id=25 class=Russia onclick=changeImage(25,16,22)>3</div>
+						 </div>
+					  </div>
+				   </div>
+				   <div class=teamABC style=border-color:#de1409>
+					  <h1 class=team>{team3}</h1>
+					  <div>
+						 <div id=26 class=table onclick=changeImage(26,17)>
+							Robot is in Auto Zone
+						 </div>
+						 <div id=27 class=table onclick=changeImage(27,18,undefined,19)>
+							Tote in Auto zone
+						 </div>
+						 <div class=USSR>
+							<div id=28 class=Russia onclick=changeImage(28,19,27)>1</div>
+							<div id=29 class=Russia onclick=changeImage(29,19,27)>2</div>
+							<div id=30 class=Russia onclick=changeImage(30,19,27)>3</div>
+						 </div>
+						 <div id=31 class=table onclick=changeImage(31,20,undefined,21)>
+							Stacked Totes
+						 </div>
+						 <div class=USSR>
+							<div id=32 class=Russia></div>
+							<div id=33 class=Russia onclick=changeImage(33,21,31)>2</div>
+							<div id=34 class=Russia onclick=changeImage(34,21,31)>3</div>
+						 </div>
+						 <div id=35 class=table onclick=changeImage(35,22,undefined,23)>
+							Containers in Auto
+						 </div>
+						 <div class=USSR>
+							<div id=36 class=Russia onclick=changeImage(36,23,35)>1</div>
+							<div id=37 class=Russia onclick=changeImage(37,23,35)>2</div>
+							<div id=38 class=Russia onclick=changeImage(38,23,35)>3</div>
+						 </div>
+					  </div>
+				   </div>
+				</div>
+			 </div>
+			<input type="submit" name="btnNext" value="Next" onclick="cleanUp()" class="bigButton" style="border-color:#de1409"/>
+			
+		</form>
+      </div>
+		  <script>
+var groupHighlights = new Array(23);
+startUp();
+
+function startUp() {
+	var a;
+	for (var b = 0; b < 3; b++) {
+		if (document.getElementsByClassName("team")[b].innerHTML === "102") {
+			document.getElementsByClassName("team")[b].style.background = "#ff7e00"
+		}
+		if (document.getElementById("allianceColor").innerHTML === "RED") {
+			a = "DE1409";
+			setBorderHighlight(b, ".teamABC", a)
+		} else {
+			a = "#164DC4";
+			setBorderHighlight(b, ".teamABC", a)
+		}
+	}
+	setBorderHighlight("0", ".Alliance", a);
+	setBorderHighlight("0", ".match", a);
+	setBorderHighlight("0", ".title", a);
+	setBorderHighlight("0", ".bigButton", a)
+}
+function changeImage(d, b, a, c) {
+	if (groupHighlights[c] !== undefined) {
+		highlightCheck(groupHighlights[c], b, false);
+		groupHighlights[c] = undefined
+	}
+	if (groupHighlights[b] === undefined) {
+		if (a !== undefined) {
+			changeImage(a, (b));
+			groupHighlights[b - 1] = a
+		}
+		groupHighlights[b] = d;
+		highlightCheck(d, b, true)
+	} else {
+		if (groupHighlights[b] === d) {
+			if (a !== undefined) {
+				highlightCheck(a, (b - 1), false);
+				groupHighlights[b - 1] = undefined
+			}
+			highlightCheck(d, b, false);
+			groupHighlights[b] = undefined
+		} else {
+			if (a !== undefined) {
+				highlightCheck(a, (b - 1), true)
+			}
+			highlightCheck(groupHighlights[b], b, false);
+			groupHighlights[b] = d;
+			highlightCheck(d, b, true)
+		}
+	}
+}
+function highlightCheck(c, b, a) {
+	if (a === true) {
+		setTextHighlight(c, "#f7b448", "#635415")
+	} else {
+		setTextHighlight(c, "#21211E", "white")
+	}
+}
+function setTextHighlight(c, a, b) {
+	document.getElementById(c).style.background = a;
+	if (b !== undefined) {
+		document.getElementById(c).style.color = b
+	}
+}
+function setBorderHighlight(c, a, b) {
+	document.querySelectorAll(a)[c].style.borderColor = b
+}
+function cleanUp() {
+	var a;
+	for (var b = 0; b < groupHighlights.length; b++) {
+		a = document.getElementById("data").innerHTML;
+		document.getElementById("data").innerHTML = a + groupHighlights[b] + ", "
+	}
+	document.getElementById("truemain").innerHTML = ""
+};</script>
+   </body>

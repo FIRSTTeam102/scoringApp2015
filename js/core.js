@@ -1,5 +1,22 @@
-createGrey();
-
+startUp();
+function startUp() {
+	createGrey();
+	createYellow();
+    var color;
+    for (var i = 0; i < 3; i++){
+        if (document.getElementById("allianceColor").innerHTML === "RED") {
+            color = "DE1409";
+            setBorderHighlight(i, ".score", color)
+        } else {
+            color = "#164DC4";
+            setBorderHighlight(i, ".score", color)
+        }
+    }
+    setBorderHighlight("0", ".Alliance", a);
+    setBorderHighlight("0", ".match", a);
+    setBorderHighlight("0", ".title", a);
+    setBorderHighlight("0", ".bigButton", a)
+}
 function createGrey() {
     for (var i = 0; i < 6; i++) {
       
@@ -18,7 +35,6 @@ function createGrey() {
             }
         }
     }
-	createYellow();
 }
 function createYellow() {
     for (var i = 0; i < 4; i++) {
@@ -161,4 +177,7 @@ function setTextHighlight(id, group, color) {
   
     document.getElementById(id).style.background = color;
   
+}
+function setBorderHighlight(identifier, name, color) {
+    document.querySelectorAll(name)[identifier].style.borderColor = color;
 }

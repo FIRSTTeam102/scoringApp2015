@@ -18,12 +18,23 @@
 	if (!mysql_select_db('team102_2015', $link)) {
 		echo sprintf('Could not select database, Err: %s', mysql_error());
 		exit;
-	}
+	}  
+	
+	$sql = "select id,title from tournaments where active = 'Y';";
+	
+	$tournament = mysql_query($sql, $link);
+	if(!$tournament)
+		die(sprintf("Error querying tournament Err: %s", mysql_error()));
+		
+	
 	@mysql_close($link);
+	if($row = mysql_fetch_assoc($tournament)) {
+		$tpl->setCurrentBlock("main");
+		$tpl->setVariable("tournamentTitle", $row['title']) ;
+		$tpl->parseCurrentBlock() ;	
+	}
 
-
-	$tpl->setCurrentBlock("main");
-	$tpl->setVariable("tournamentTitle", "Jordan's Tournament") ;
+	
 
 	$tpl->show();
 ?>
