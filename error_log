@@ -357,3 +357,4 @@
 [23-Feb-2015 18:24:39 America/Chicago] PHP Parse error:  syntax error, unexpected '&&' (T_BOOLEAN_AND) in /home/team102/public_html/2015Dev/teleop.php on line 38
 [23-Feb-2015 18:24:46 America/Chicago] PHP Parse error:  syntax error, unexpected '&&' (T_BOOLEAN_AND) in /home/team102/public_html/2015Dev/teleop.php on line 38
 [23-Feb-2015 20:26:55 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/team102/public_html/2015Dev/teleop.php on line 137
+[24-Feb-2015 17:59:52 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/team102/public_html/2015Dev/teleop.php on line 45

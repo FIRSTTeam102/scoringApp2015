@@ -18,7 +18,7 @@
 	// if we cannot get the password from session - redirect to the starting page.
 	if(!$_SESSION['password'])
 	{
-		header("Location: index.php"); 	/* Redirect browser */
+		header("Location: team102.php"); 	/* Redirect browser */
 		exit();
 	}
 	
@@ -41,55 +41,56 @@
 		echo '<br>';
 		die;
 */		
-		if($_POST['team'] == null)
+		if(($_POST['team'] == null) && isset($_POST['btnNext']))
 		{
-			echo '<!-- Please select a team. -->';
 			$tpl->setCurrentBlock("reportError") ;
 			$tpl->setVariable("alertError", "Please select a team.");
 			$tpl->parseCurrentBlock() ;
 		}
 		else
 		{
-			// Insert the submitted cycle into the database.
-			// No validations are necessary.
-			$sql = sprintf("insert into match_team_cycles
-								(tournament_id, match_number, team_number, cycle_number
-									, tote_start_height
-									, tote_end_height
-									, container_scored
-									, litter_scored
-									, coop_start_height
-									, coop_end_height)
-								 values ('%s', %s, %s, %s, %s, %s, '%s', '%s', %s, %s)
-									ON DUPLICATE KEY UPDATE 
-									tote_start_height = %s
-									, tote_end_height = %s
-									, container_scored = '%s'
-									, litter_scored = '%s'
-									, coop_start_height = %s
-									, coop_end_height = %s
-								 "
-								, $_SESSION['tournament']->ID
-								, $_SESSION['match']->match_number
-								, ($_POST['team'] == 1) ? $_SESSION['match']->team1 : (($_POST['team'] == 2) ? $_SESSION['match']->team2 : $_SESSION['match']->team3)
-								, $_SESSION['cycleNumber']
-								, $_POST['tote_start_height'] == null ? "0" : $_POST['tote_start_height']
-								, $_POST['tote_end_height'] == null ? "0" : $_POST['tote_end_height']
-								, isset($_POST['container_scored']) ? "Y" : "N"
-								, isset($_POST['litter_scored']) ? "Y" : "N"
-								, $_POST['coop_start_height'] == null ? "0" : $_POST['coop_start_height']
-								, $_POST['coop_end_height'] == null ? "0" : $_POST['coop_end_height']
-								, $_POST['tote_start_height'] == null ? "0" : $_POST['tote_start_height']
-								, $_POST['tote_end_height'] == null ? "0" : $_POST['tote_end_height']
-								, isset($_POST['container_scored']) ? "Y" : "N"
-								, isset($_POST['litter_scored']) ? "Y" : "N"
-								, $_POST['coop_start_height'] == null ? "0" : $_POST['coop_start_height']
-								, $_POST['coop_end_height'] == null ? "0" : $_POST['coop_end_height']
-								);
-			$insertReturn = mysql_query($sql, $link);
-			if(!$insertReturn)
-				die("Error inserting match_team_cycles team: " . $_SESSION['match']->team1 . " Err: " . mysql_error());
-
+			if($_POST['team'] != null)
+			{
+				// Insert the submitted cycle into the database.
+				// No validations are necessary.
+				$sql = sprintf("insert into match_team_cycles
+									(tournament_id, match_number, team_number, cycle_number
+										, tote_start_height
+										, tote_end_height
+										, container_scored
+										, litter_scored
+										, coop_start_height
+										, coop_end_height)
+									 values ('%s', %s, %s, %s, %s, %s, '%s', '%s', %s, %s)
+										ON DUPLICATE KEY UPDATE 
+										tote_start_height = %s
+										, tote_end_height = %s
+										, container_scored = '%s'
+										, litter_scored = '%s'
+										, coop_start_height = %s
+										, coop_end_height = %s
+									 "
+									, $_SESSION['tournament']->ID
+									, $_SESSION['match']->match_number
+									, ($_POST['team'] == 1) ? $_SESSION['match']->team1 : (($_POST['team'] == 2) ? $_SESSION['match']->team2 : $_SESSION['match']->team3)
+									, $_SESSION['cycleNumber']
+									, $_POST['tote_start_height'] == null ? "0" : $_POST['tote_start_height']
+									, $_POST['tote_end_height'] == null ? "0" : $_POST['tote_end_height']
+									, isset($_POST['container_scored']) ? "Y" : "N"
+									, isset($_POST['litter_scored']) ? "Y" : "N"
+									, $_POST['coop_start_height'] == null ? "0" : $_POST['coop_start_height']
+									, $_POST['coop_end_height'] == null ? "0" : $_POST['coop_end_height']
+									, $_POST['tote_start_height'] == null ? "0" : $_POST['tote_start_height']
+									, $_POST['tote_end_height'] == null ? "0" : $_POST['tote_end_height']
+									, isset($_POST['container_scored']) ? "Y" : "N"
+									, isset($_POST['litter_scored']) ? "Y" : "N"
+									, $_POST['coop_start_height'] == null ? "0" : $_POST['coop_start_height']
+									, $_POST['coop_end_height'] == null ? "0" : $_POST['coop_end_height']
+									);
+				$insertReturn = mysql_query($sql, $link);
+				if(!$insertReturn)
+					die("Error inserting match_team_cycles team: " . $_SESSION['match']->team1 . " Err: " . mysql_error());
+			}
 			// Redirect to the Recap if we are done.
 			if(isset($_POST['btnDone']))
 			{
@@ -118,7 +119,7 @@
 						die("Error updating match_teams team: " . $_SESSION['match']->team1 . " Err: " . mysql_error());
 				}
 
-				header("Location: recap.php"); /* Redirect browser */
+				header("Location: choosematch.php"); /* Redirect browser */
 				exit();
 			}
 		}

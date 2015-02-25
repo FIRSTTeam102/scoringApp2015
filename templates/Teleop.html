@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>Teleop</title>
-<link type="text/css" rel="stylesheet" href="css/Teleop.css"/>	
+<link type="text/css" rel="stylesheet" href="templates/css/Teleop.css"/>	
 <script type='text/javascript' src='jqueryui/js/jquery-1.10.2.js'></script>
 	<!-- BEGIN reportError --> 
 	<script type='text/javascript'>//<![CDATA[ 
@@ -24,15 +24,15 @@
 
         </div>
         <div class="Alliance">
-             <h2 id="allianceColor">{allianceColor}</h2>
+             <h2 id="allianceColor">RED</h2>
 
         </div>
     </div>
     <table class="score" id="score0">
 	    <tr id="teams">
-		<td class="team" id="39" onclick="changeImage(39,2)">{team1}</td>
-		<td class="team" id="40" onclick="changeImage(40,2)">{team2}</td>
-		<td class="team" id="41" onclick="changeImage(41,2)">{team3}</td>
+		<td class="team" id="39" onclick="changeImage(39,2)">1403</td>
+		<td class="team" id="40" onclick="changeImage(40,2)">102</td>
+		<td class="team" id="41" onclick="changeImage(41,2)">11</td>
 	    </tr>
 	</table>
 	<table class="score" id="score1">
@@ -66,7 +66,7 @@
 		<input name="coop_start_height" id="input3s"/>
 		<input name="coop_end_height" id="input3e"/>
   </form>
-<script type="text/javascript" src="js/Teleop.js"></script>
+<script type="text/javascript" src="templates/js/Teleop.js"></script>
 </body>
 </html>
 <!-- END main -->

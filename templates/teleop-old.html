@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Teleop</title>
+<style type="text/css">
+body {
+  font-size: 2em; 
+  padding: 0; 
+  margin: 0;
+  background-color: #222;
+  text-align: center;
+  }
+.top {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+  font-size: .85em;
+ } 
+.totes {
+    width: 100px;
+}
+.container {
+    width: 100px;
+}
+.score{
+  background-color: #F5F5F5;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+}
+.team{
+  background-color: #f5f5f5;
+  justify-content: center;
+  max-height: 10px;
+  font-size: 4em;
+  padding: 10px;
+}
+table{
+  border: 8px ridge #8C6565;
+}
+.Alliance {
+  border: 8px ridge #8C6565;
+  margin: 5px; background-color: #BA0B0B;
+  text-decoration: underline;
+  color: black;
+}
+.match {
+  border: 8px ridge #8C6565;
+  margin: 5px;
+  background-color: #383838;
+  color: white;
+}
+.title {
+  border: 8px ridge #8C6565;
+  margin: 5px; 
+  background-color: #383838; 
+  color:  white;
+}
+.bigButton {
+  background-color: #f7b448;
+  color: #000000;
+  width: 180px;
+  height: 80px;
+  font-size: 60px;
+  border: 8px ridge green;
+  margin-left: auto;
+  margin-right: auto;
+  visibility: visible;
+ }
+ </style>
+</head>
+<body>
+    <table>
+	    <tr id="teams">
+		<td class="team" id="39" onclick="changeImage(39,2)">
+		  {team1}
+		</td>
+		<td class="team" id="40" onclick="changeImage(40,2)">
+		  {team2}
+		</td>
+		<td class="team" id="41" onclick="changeImage(41,2)">
+		  {team3}
+		</td>
+	    </tr>
+	</table>
+	<table>
+	    <tr id="row0"></tr>
+	    <tr id="row1"></tr>
+	    <tr id="row2"></tr>
+	    <tr id="row3"></tr>
+	    <tr id="row4"></tr>
+	    <tr id="row5"></tr>
+	</table>
+	<table>
+	    <tr>
+		<td id="37"><img class="container" id="37" src="http://www.team102.org/2015/resources/images/containerlight.png" onclick="changeImage(37, 1)"/></td>
+	    <td id="38"><img class="container" id="38" src="http://www.team102.org/2015/resources/images/containerlitterlight.png" onclick="changeImage(38, 1)"/></td>
+	    </tr>
+	</table>
+	<table>
+		<tr id="yellow0"></tr>
+	    <tr id="yellow1"></tr>
+	    <tr id="yellow2"></tr>
+	    <tr id="yellow3"></tr>
+	</table>
+	<form id="form" action="teleop.php" method="POST">
+		<input type="submit" name="btnNext" class="bigButton" value="Next"/>
+		<input name="tote_start_height" id="input0s"/>
+		<input name="tote_end_height" id="input0e"/>
+		<input name="container_scored" id="input1c"/>
+		<input name="litter_scored" id="input1l"/>
+		<input name="team" id="input2"/>
+		<input name="coop_start_height" id="input3s"/>
+		<input name="coop_end_height" id="input3e"/>
+  </form>
+<script type="text/javascript">
+startUp();
+var groupHighlights = new Array(4);
+var greyStart, greyEnd;
+var yellowStart, yellowEnd;
+var identity;
+
+function startUp(){
+	createGrey();
+	createYellow();
+}
+function createGrey() {
+    for (var i = 0; i < 6; i++) {
+      
+        for (var j = 0; j < 6; j++) {
+          
+            var id = i * 6 + j;
+          
+            if (i + j >= 6) {
+              
+                document.getElementById("row" + i).innerHTML = document.getElementById("row" + i).innerHTML + "<td id='" + id + "';> <img class='totes' src='http://www.team102.org/2015/resources/images/totegrey.png'</td>";
+              
+            } else {
+              
+                document.getElementById("row" + i).innerHTML = document.getElementById("row" + i).innerHTML + "<td id='" + id + "';> <img class='totes' src='http://www.team102.org/2015/resources/images/totelight.png' onclick='changeImage(" + id + ",0)'/></td>";
+
+            }
+        }
+    }
+}
+function createYellow() {
+    for (var i = 0; i < 4; i++) {
+      
+        for (var j = 0; j < 4; j++) {
+          
+            var id = (i * 4 + j);
+          
+            if (i + j >= 4) {
+              
+                document.getElementById("yellow" + i).innerHTML = document.getElementById("yellow" + i).innerHTML + "<td id='" + (id+100)+ "';> <img class='totes' src='http://www.team102.org/2015/resources/images/yellowtotegrey.png'</td>";
+              
+            } else {
+              
+                document.getElementById("yellow" + i).innerHTML = document.getElementById("yellow" + i).innerHTML + "<td id='" + (id+100)+ "';> <img class='totes' src='http://www.team102.org/2015/resources/images/yellowtotelight.png' onclick='changeImage(" + (id+100) + ",3)'/></td>";
+
+            }
+        }
+    }
+}
+
+
+function changeImage(id, group) {
+  
+    if (groupHighlights[group] === undefined) {
+      
+        groupHighlights[group] = id;
+        highlightCheck(id, group, true);
+      
+    } else {
+      
+        if (groupHighlights[group] === id) {
+          
+            highlightCheck(id, group, false);
+            groupHighlights[group] = undefined;
+          
+        } else {
+          
+            highlightCheck(groupHighlights[group], group, false);
+            groupHighlights[group] = id;
+            highlightCheck(id, group, true);
+          
+        }
+    }
+    if (groupHighlights[0] !== undefined) {
+      
+        startingHeight = id % 6;
+        endingHeight = 6 - Math.floor(id / 6);
+      
+    } else {
+      
+        startingHeight = undefined;
+        endingHeight = undefined;
+      
+    }
+  
+}
+
+
+
+function highlightCheck(id, group, isHighlighting) {
+  
+    var column, row;
+    switch (group) {
+        case 0:
+			column = id%6;
+			row = 6-Math.floor(id/6);
+				if(isHighlighting===true){
+					setInputValue(group, column, "s");
+					setInputValue(group, row, "e");
+            	}else{
+					setInputValue(group, "", "s");
+					setInputValue(group, "", "e");
+				}
+			
+            lowerHighlight(id, group, isHighlighting, 6, 0);
+            break;
+        
+        case 1:
+			
+            if (isHighlighting === true) {
+              
+                setHighlight(id);
+                if(id===37){
+                    setInputValue(1,1,"c");
+                }else{
+                    setInputValue(1,1,"l");
+                }
+				
+            } else {
+              
+                removeHighlight(id);
+                if(id===37){
+                    setInputValue(1,"","c");
+                }else{
+                    setInputValue(1,"","l");
+                }
+
+            }
+            break;
+        
+        case 2:
+            if (isHighlighting === true) {
+                setTextHighlight(id, group, "#8a8a8a");
+                
+                setInputValue(2, (id-38), "");
+				
+            } else {
+                setTextHighlight(id, group, "#3b444b");
+                
+                setInputValue(2, "", "");
+                
+            }
+            break;
+		case 3:
+			column = id%4;
+			row = 4-Math.floor((id-100)/4);
+				if(isHighlighting===true){
+					setInputValue(group, column, "s");
+					setInputValue(group, row, "e");
+            	}else{
+					setInputValue(group, "", "s");
+					setInputValue(group, "", "e");
+				}
+		
+			lowerHighlight(id, group, isHighlighting, 4, 100);
+			break;
+    }
+}
+
+function lowerHighlight(id, group, isHighlighting, modifier, x) {
+	id = id-x;
+    var row = Math.floor(id / modifier),
+        column = id % modifier,
+        end = false;
+		
+    do {
+      
+        if (row + column >= modifier) {
+          
+            end = true;
+          
+        } else if (isHighlighting === true) {
+          
+            setHighlight((id+x), group);
+            row++;
+            id = row * modifier + column;
+          
+        } else {
+          
+            removeHighlight((id+x), group);
+            row++;
+            id = row * modifier + column;
+          
+        }
+      
+    } while (end === false);
+  
+}
+function removeHighlight(id, group) {
+    document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.replace("dark", "light");
+}
+function setHighlight(id, group) {
+    document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.replace("light", "dark");
+}
+function setTextHighlight(id, group, color) {
+    document.getElementById(id).style.background = color;
+}
+function setInputValue(group, value, extension){
+  document.getElementById("input"+group+extension).value=value;
+}
+</script>
+</body>
+</html>

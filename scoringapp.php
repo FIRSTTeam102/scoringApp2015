@@ -5,7 +5,7 @@
 	// if we cannot get the password from session - redirect to the starting page.
 	if(!$_SESSION['password'])
 	{
-		header("Location: index.php"); 	/* Redirect browser */
+		header("Location: team102.php"); 	/* Redirect browser */
 		exit();
 	}
 	require_once "php/HTML/Template/IT.php";

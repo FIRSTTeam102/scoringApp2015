@@ -1,5 +1,5 @@
 body {
-  font-size: 2em; 
+  font-size: 1.8em; 
   padding: 0; 
   margin: 0;
   background-color: #222;
@@ -31,7 +31,7 @@ body {
   color: #383838;
   justify-content: center;
   max-height: 10px;
-  font-size: 4em;
+  font-size: 3em;
   padding: 10px;
 }
 table{
@@ -62,8 +62,8 @@ table{
   height: 80px;
   font-size: 60px;
   border: 8px ridge green;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 50px;
+  margin-right: 50px;
   visibility: visible;
  }
  input{
@@ -71,4 +71,5 @@ table{
  }
  #done{
 	border-color: #ff7e00;
+	float: right;
  }

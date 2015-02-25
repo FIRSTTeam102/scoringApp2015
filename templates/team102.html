@@ -8,14 +8,27 @@
 <!--    <link rel="stylesheet" href="stylesheet.css" /> -->
 	<style type="text/css">
 	body {
-	background-image: url("http://www.team102.com/2015Dev/Geary.jpg");
-	background-repeat: repeat-y;
+	background-color: #222;
+	color: #383838;
+	}
+	form{
+	background-color: #F5F5F5;
+	color: #383838;
+	max-width: 600px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	border: 5px solid #8a8a8a;
 	}
 	.header{
 	display: flex;
 	flex-direction:row-reverse;
 	flex-wrap: wrap;
 	align-content: space-between;
+	}
+	.loginbox{
+	margin-left: 25px;
+	padding-left: 10px;
+	border: 5px ridge #ff7e00;
 	}
 	.nav {
     padding: 0 25px;
@@ -26,7 +39,7 @@
 	flex-grow: 5;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-weight: 300;
-	color: d5d5d8;
+	color: #383838;
 	}
 	.logo {
 	 width: 300px;
@@ -45,6 +58,7 @@
 	width: 102 px;
 	font-size: 20px;
 	margin-top: 17px;
+	border: 5px ridge #ff7e00;
 	}
 	.fieldLabel	{
 		font-size: 20px;
@@ -73,8 +87,8 @@
 			</div>
 		</div>
 		<form id="indexForm" action="team102.php" method="POST">
-			<div id="login" style="margin-left: 15px; padding-left: 10px;">
-				<table style="background-color: #F7b448; padding: 5px;">
+			<div id="login">
+				<table style="background-color: #F7b448; padding: 5px;" class="loginbox">
 				<tr><td><label for="txtInitials" class="fieldLabel">Your Initials:</label></td>
 					<td><input type="text" maxLength="4" name="txtInitials" tabindex="1" style="width: 90px;"/></td>
 				</tr>
