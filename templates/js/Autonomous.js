@@ -1,25 +1,21 @@
 var groupHighlights = new Array(23);
-
 startUp();
-
 function startUp() {
 	var color;
 	for (var i = 0; i < 3; i++) {
 		if (document.getElementsByClassName("team")[i].innerHTML === "102") {
 			document.getElementsByClassName("team")[i].style.background = "#ff7e00";
 		}
-		if (document.getElementById("allianceColor").innerHTML === "RED") {
-			color = "DE1409";
-			setBorderHighlight(i, ".teamABC", color);
-		} else {
-			color = "#164DC4";
-			setBorderHighlight(i, ".teamABC", color);
+		if(document.getElementById("mBlue")===null){
+			colorDark = "#DE1409";
+		}else{
+			colorDark = "#164DC4";
 		}
 	}
-	setBorderHighlight("0", ".Alliance", color);
-	setBorderHighlight("0", ".match", color);
-	setBorderHighlight("0", ".title", color);
-	setBorderHighlight("0", ".bigButton", color);
+	setBorderHighlightById("team0", colorDark);
+	setBorderHighlightById("team1", colorDark);
+	setBorderHighlightById("team2", colorDark);
+	setBorderHighlightById("Next", colorDark);
 }
 
 
@@ -106,6 +102,6 @@ function setTextHighlight(id, color, text) {
 	}
 }
 
-function setBorderHighlight(i, selector, color) {
-	document.querySelectorAll(selector)[i].style.borderColor = color;
+function setBorderHighlightById(id, color) {
+	document.getElementById(id).style.borderColor = color;
 }

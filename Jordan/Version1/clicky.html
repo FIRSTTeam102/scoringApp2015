@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clicky</title>
+	<script src="clicky.js"/></script>
+</head>
+<body>
+	
+	<!-- Each element has its own unique ID.
+		The default styling for each element is blue.
+		However, so far, the only type of highlight-able element that REQUIRES to 
+		be blue to begin with (so far) is the IMAGE.
+	-->
+	
+	<img id="0" src="http://www.team102.org/2015/resources/images/toteblue.png" onclick="highlightCheck(0,0,0,'red','blue')">
+	<img id="1" src="http://www.team102.org/2015/resources/images/toteblue.png" onclick="highlightCheck(1,0,0,'red','blue')">
+	<!-- ^unique ID   	Source of unhighlighted IMAGE.           Calls function "highlightCheck". Note that the first value = ID, and the third = 0.
+		highlightCheck takes 5 variables. Check javascript for description. -->
+	
+	<div id='2' style="background: blue" onclick="highlightCheck(2,1,1,'red','blue')">BACKGROUND!</div>
+	<div id='3' style="background: blue" onclick="highlightCheck(3,1,1,'red','blue')">I M A DIV!!</div>
+	<!-- Note that the third value of highlightCheck = 1. These elements are pre-styled with a blue background. -->
+	
+	<div id='4' style="color: blue" onclick="highlightCheck(4,2,2,'red','blue')">TEXT!</div>
+	<div id='5' style="color: blue" onclick="highlightCheck(5,2,2,'red','blue')">I HAVE TEXT!</div>
+	<!-- These elements are pre-styled with blue text. -->
+	
+	
+	<div id='6' style="border: 5px solid blue" onclick="highlightCheck(6,3,3,'red','blue')">BORDER!</div>
+	<div id='7' style="border: 5px solid blue" onclick="highlightCheck(7,3,3,'red','blue')">I HAVE A BORDER!</div>
+	<!-- These elements REQUIRE a border - but they do NOT require a default border color equivalent to the unhighlighted value.
+		(i.e. it could be black, chartreuse, or mustard yellow for all I care.) -->
+	
+</body>
+</html>

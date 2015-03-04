@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>FRC 2014 Scoring App</title>
+    <title>FRC Team102 Public Homepage</title>
     <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
 	<script type='text/javascript' src='jqueryui/js/jquery-1.10.2.js'></script>
 <!--    <link rel="stylesheet" href="stylesheet.css" /> -->
 	<style type="text/css">
 	body {
-	background-image: url("http://www.team102.org/2015Dev/Geary.jpg");
-	background-repeat: repeat-y;
+	background-image: url("Geary.jpg");
+	background-repeat: repeat;
+	background-color: #222;
+	background-attachment: fixed;
 	}
 	.header{
 	display: flex;
@@ -18,16 +20,18 @@
 	align-content: space-between;
 	}
 	.nav {
-	 width: 200px;
-    padding: 25px;
+	max-width: 400px;
+	background-image: url("Untitled.png.png");
+    padding: 0 10px 17px 25px;
     border: 25px;
-    margin: 0 15 25 0px;
+    margin: 15px 15px 15px 15px;
 	order: 2;
 	align-self: flex-end;
 	flex-grow: 5;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-weight: 300;
 	color: d5d5d8;
+	border-radius: 16px;
 	}
 	.logo {
 	 width: 300px;
@@ -62,15 +66,15 @@
     <div id="page">
         <div class="header">
 			<div class="logo">
-			<img src="favicon.ico" style="float: right; padding: 3px 15px 40px 10px;"/>
-			<form id="indexForm" action="index.php" method="POST">
+            <img src="http://www.team102.org/2015Dev/favicon.ico" style="float: right; padding: 3px 15px 20px 10px;" onclick="changeImage()"/>
+			<div id="indexForm" onclick="changeImage()">
 				<div id="team102" style="text-align: right">FIRST Team 102</div>
 				<div style="text-align: right">The Gearheads</div>
 				<div style="text-align: right">Somerville High School, NJ</div>
 			</div>
-				
-				
-                <div class="nav">
+		    </div>
+			
+                <form class="nav" id="form" action="index.php" method="POST">
 					<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnStandings" value="Game Overview" /></div>
 					An overview of the game.
 					<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnStandings" value="Standings Page" /></div>
@@ -83,9 +87,26 @@
 					Alliances that have been formed for the final matches
 					<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnLighterApp" value="Alliance Color Lighter" /></div>
 					Illuminate screen in blue or red to show support for your alliance!
-                </div>
-			</form>
-        
+					<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnPrivate" value="Team 102 Homepage" /></div>
+					Team102 private homepage. Requires password to enter scoring app.
+					</div>
+				</form>
+        <script>
+	var groupHighlights = [false];
+
+function changeImage() {
+
+        if (groupHighlights[0]===false) {
+          document.getElementById("indexForm").style.background = "#ff8a19";
+          document.getElementById("indexForm").style.color = "black";
+          groupHighlights[0]=true;
+          } else {
+          document.getElementById("indexForm").style.background = "";
+          document.getElementById("indexForm").style.color = "white";
+          groupHighlights[0]=false;
+        }
+    } 
+		</script>
     </div>
 </body>
 <!-- END main -->

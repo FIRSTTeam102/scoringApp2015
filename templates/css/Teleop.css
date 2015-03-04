@@ -13,11 +13,54 @@ body {
   justify-content: center;
   font-size: .85em;
  } 
+ #mRed{
+ background: #DE1409;
+ border-color: #DE1409;
+ }
+ #mBlue{
+ background: #164DC4;
+ border-color: #164DC4;
+ }
+ #tRed{
+ background: #DE1409;
+ border-color: #DE1409;
+ }
+ #tBlue{
+ background: #164DC4;
+ border-color: #164DC4;
+ }
 .totes {
-    width: 100px;
+    width: 100%;
 }
-.container {
-    width: 100px;
+#score1{
+width: 95%;
+}
+#score2{
+width: 60%;
+}
+#score3{
+width: 95%;
+}
+.tableCR{
+width: 100%;
+}
+.tableCD{
+width: 50%;
+}
+.container{
+width: 100%;
+}
+.tableYR{
+width: 25%;
+}
+.tableYD{
+width: 25%;
+}
+.tableR{
+width: 16.66%;
+}
+.tableD{
+width: 16.66%;
 }
 .score{
   background-color: #F5F5F5;
@@ -62,8 +105,7 @@ table{
   height: 80px;
   font-size: 60px;
   border: 8px ridge green;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin: 25px 50px 0 50px;
   visibility: visible;
  }
  input{

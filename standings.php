@@ -4,18 +4,42 @@
 	session_start();
 	
 	// Connect to the database.
-	$link = mysql_connect('Team102.org:3306', 'team102_webuser', 'Gearheads');
-	
-	if (!mysql_select_db('team102_2014', $link)) {
-    		echo sprintf('Could not select database, Err: %s', mysql_error());
-    		exit;
+	$publicPwd = file_get_contents('junk');
+	$link = @mysql_connect('team102.org:3306', 'team102_readonly', $publicPwd);
+	if(!$link)
+	{
+		echo sprintf('Could not connect to database, Err: %s', mysql_error());
+		exit;
+	}	
+	if (!mysql_select_db('team102_2015', $link)) {
+		echo sprintf('Could not select database, Err: %s', mysql_error());
+		exit;
 	}
-	$sort = "rank";
+	$sort = "team_number";
 	if($_GET['sort'] != null)
 		$sort = $_GET['sort'];
 
-	$sql = "select * from team_avg_pts_v order by ";
-	
+	$sql = "select mt.tournament_id, mt.team_number, count(mt.match_number) num_matches"
+	. ", avg(mtc.tote_end_height - mtc.tote_start_height) as avgAdded"
+	. ", sum(CASE mtc.container_scored"
+	. "            WHEN 'Y' THEN 1"
+	. "            ELSE 0"
+	. "        END) AS `total_containers`"
+	. ", sum(CASE mtc.litter_scored"
+	. "            WHEN 'Y' THEN 1"
+	. "            ELSE 0"
+	. "        END) AS `total_litter`"
+	. ", avg(mtc.coop_end_height - mtc.coop_start_height) as avgCoopAdded"
+	. " FROM ((`match_teams` `mt`"
+	. "       LEFT JOIN `match_team_cycles` `mtc` on(((`mtc`.`tournament_id` = `mt`.`tournament_id`)"
+	. "                                               AND (`mtc`.`match_number` = `mt`.`match_number`)"
+	. "                                               AND (`mtc`.`team_number` = `mt`.`team_number`))))"
+	. "      JOIN `tournaments` `t`)"
+	. " WHERE ((`mt`.`tournament_id` = `t`.`ID`)"
+	. "       AND (`mt`.`completed` = 'Y')"
+	. "       AND (`t`.`active` = 'Y'))"
+	. " group by 1, 2 order by ";
+
 	if($_GET['AllTournaments'] != null)
 		$sql = "select apv.* 
 				from t_team_avg_pts_v  apv

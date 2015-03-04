@@ -4,18 +4,20 @@ var greyStart, greyEnd;
 var yellowStart, yellowEnd;
 var identity;
 var gearheads;
-var colorDark, colorDull;
+var colorDark, colorDull, color;
 
 function startUp(){
 	createGrey();
 	createYellow();
 		
-		if(document.getElementById("allianceColor").innerHTML==="RED"){
+		if(document.getElementById("mBlue")===null){
 			colorDark = "#DE1409";
-			colorDull = "#610101"
+			colorDull = "#FA9898";
+			color = "red";
 		}else{
 			colorDark = "#164DC4";
-			colorDull= "#011F61"
+			colorDull= "#9AB9FC";
+			color = "blue";
 		}
 		for(var i=0; i<3; i++){
 			if(document.getElementById(39+i).innerHTML==="102"){
@@ -29,10 +31,12 @@ function startUp(){
 		setBorderHighlightBySelector("score",1, colorDark);
 		setBorderHighlightBySelector("score",2, colorDark);
 		setBorderHighlightBySelector("score",3, colorDark);
-		setBorderHighlight(".Alliance", colorDark);
-		setBorderHighlight(".match", colorDark); 
-		setBorderHighlight(".title", colorDark);
-		setBorderHighlight(".bigButton", colorDark);
+		setBackgroundHighlight("score0", undefined, colorDull);
+		setBackgroundHighlight("score1", undefined, colorDull);
+		setBackgroundHighlight("score2", undefined, colorDull);
+		setBackgroundHighlight("score3", undefined, colorDull);
+		setBorderHighlightById("Next", false);
+		setBorderHighlightById("Done", false);
 }
 
 function createGrey() {
@@ -44,11 +48,11 @@ function createGrey() {
           
             if (i + j >= 6) {
               
-                document.getElementById("row" + i).innerHTML = document.getElementById("row" + i).innerHTML + "<td id='" + id + "';> <img class='totes' src='http://www.team102.org/2015/resources/images/totegrey.png'</td>";
+                document.getElementById("row" + i).innerHTML = document.getElementById("row" + i).innerHTML + "<td id='" + id + "' class='tableD'> <img class='totes' src='http://www.team102.org/2015/resources/images/totegrey.png'</td>";
               
             } else {
               
-                document.getElementById("row" + i).innerHTML = document.getElementById("row" + i).innerHTML + "<td id='" + id + "';> <img class='totes' src='http://www.team102.org/2015/resources/images/totelight.png' onclick='changeImage(" + id + ",0)'/></td>";
+                document.getElementById("row" + i).innerHTML = document.getElementById("row" + i).innerHTML + "<td id='" + id + "' class='tableD'> <img class='totes' src='http://www.team102.org/2015/resources/images/totedull.png' onclick='changeImage(" + id + ",0)'/></td>";
 
             }
         }
@@ -64,11 +68,11 @@ function createYellow() {
           
             if (i + j >= 4) {
               
-                document.getElementById("yellow" + i).innerHTML = document.getElementById("yellow" + i).innerHTML + "<td id='" + (id+100)+ "';> <img class='totes' src='http://www.team102.org/2015/resources/images/yellowtotegrey.png'</td>";
+                document.getElementById("yellow" + i).innerHTML = document.getElementById("yellow" + i).innerHTML + "<td id='" + (id+100)+ "';> <img class='totes'  class='tableYD' src='http://www.team102.org/2015/resources/images/yellowtotegrey.png'</td>";
               
             } else {
               
-                document.getElementById("yellow" + i).innerHTML = document.getElementById("yellow" + i).innerHTML + "<td id='" + (id+100)+ "';> <img class='totes' src='http://www.team102.org/2015/resources/images/yellowtotelight.png' onclick='changeImage(" + (id+100) + ",3)'/></td>";
+                document.getElementById("yellow" + i).innerHTML = document.getElementById("yellow" + i).innerHTML + "<td id='" + (id+100)+ "';> <img class='totes' class='tableYD' src='http://www.team102.org/2015/resources/images/yellowtotedull.png' onclick='changeImage(" + (id+100) + ",3)'/></td>";
 
             }
         }
@@ -213,14 +217,21 @@ function lowerHighlight(id, group, isHighlighting, modifier, x) {
             end = true;
           
         } else if (isHighlighting) {
-          
-            setHighlight((id+x), group);
+			if(modifier===4){
+				setHighlight((id+x), group);
+			}else{
+				setColoredHighlight((id+x), group);
+			}
             row++;
             id = row * modifier + column;
           
         } else {
-          
-            removeHighlight((id+x), group);
+			if(modifier===4){
+				removeHighlight((id+x), group);
+			}else{
+				removeColoredHighlight((id+x), group);
+			}
+			
             row++;
             id = row * modifier + column;
           
@@ -232,13 +243,25 @@ function lowerHighlight(id, group, isHighlighting, modifier, x) {
 
 function removeHighlight(id, group) {
   
-    document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.replace("dark", "light");
+    document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.replace("selected", "dull");
+  
+}
+
+function removeColoredHighlight(id, group) {
+  
+    document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.replace(color, "dull");
   
 }
 
 function setHighlight(id, group) {
   
-    document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.replace("light", "dark");
+    document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.replace("dull", "selected");
+  
+}
+
+function setColoredHighlight(id, group) {
+  
+    document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.replace("dull", color);
   
 }
 

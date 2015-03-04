@@ -1,0 +1,9 @@
+Current solutions:
+- Allows 4 types of highlight.
+- Nice and clicky
+- Very slightly reduced lag with "element" variable, instead of a DOM search every time
+
+Problems:
+- Have to manually type all the info in onclick function call
+- Border has to have a border before it's styled
+- Only one "type" can be called at a time (so you can't do text and background at the same time)

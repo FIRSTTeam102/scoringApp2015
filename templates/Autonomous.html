@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Autonomous</title>
+        <title>{tournamentName} Autonomous Mode</title>
         <link type="text/css" rel="stylesheet" href="templates/css/Autonomous.css"/>
-        
     </head>
     <body>
         <div class="top">
-            <div class="match" style="border-color: rgb(222, 20, 9);">
-                <h2 id="match">{tournamentTitle}</h2>
-            </div>
-            <div class="title" style="border-color: rgb(222, 20, 9);">
-                <h2>Autonomous Mode</h2>
-            </div>
-            <div class="Alliance" style="border-color: rgb(222, 20, 9);">
-                <h2 id="{allianceColor}">{allianceColor}</h2>
-            </div>
-        </div>
+			<div class="match" id="m{allianceColor}">
+				 <h2 id="match">{tournamentTitle}</h2>
+			</div>
+			<div class="title" id="t{allianceColor}">
+				 <h2>Autonomous Mode</h2>
+			</div>
+		</div>
         <div class="main">
             <div class="teams">
-                <div class="teamABC" style="border-color: rgb(222, 20, 9);">
+                <div class="teamABC" id="team0" >
                     <h1 class="team">{team1}</h1>
                     <div>
                         <div id="0" class="table" onclick="changeImage(0,0)">
@@ -51,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="teamABC" style="border-color: rgb(222, 20, 9);">
+                <div class="teamABC" id="team1" >
                     <h1 class="team">{team2}</h1>
                     <div>
                         <div id="13" class="table" onclick="changeImage(13,10)">
@@ -83,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="teamABC" style="border-color: rgb(222, 20, 9);">
+                <div class="teamABC" id="team2" >
                     <h1 class="team">{team3}</h1>
                     <div>
                         <div id="26" class="table" onclick="changeImage(26,17)">
@@ -118,7 +114,7 @@
             </div>
         </div>
         <form id="form" action="autonomous.php" method="POST">
-            <input type="submit" class="bigButton" style="border-color: rgb(222, 20, 9);" value="Next" name="btnNext"/>
+            <input type="submit" id="Next" class="bigButton"  value="Next" name="btnNext"/>
 			<div>
 				<input name="team1robot" id="input0"/>
 				<input name="team1totevalue" id="input2"/>

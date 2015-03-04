@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Teleop</title>
+<title>{tournamentName} Teleop Mode</title>
 <link type="text/css" rel="stylesheet" href="templates/css/Teleop.css"/>	
 <script type='text/javascript' src='jqueryui/js/jquery-1.10.2.js'></script>
 	<!-- BEGIN reportError --> 
@@ -16,48 +16,43 @@
 </head>
 <body>
 	<div class="top">
-        <div class="match" >
-             <h2 id="match">{tournamentTitle} Match: {matchNumber}, Cycle: {cycleNumber}</h2>
-        </div>
-        <div class="title" >
-             <h2>Teleop Mode</h2>
-
-        </div>
-        <div class="Alliance">
-             <h2 id="allianceColor">RED</h2>
-
-        </div>
-    </div>
+			<div class="match" id="m{allianceColor}">
+				 <h2 id="match">{tournamentTitle} Match: {matchNumber}, Cycle: {cycleNumber}</h2>
+			</div>
+			<div class="title" id="t{allianceColor}">
+				 <h2>Teleop Mode</h2>
+			</div>
+		</div>
     <table class="score" id="score0">
 	    <tr id="teams">
-		<td class="team" id="39" onclick="changeImage(39,2)">1403</td>
-		<td class="team" id="40" onclick="changeImage(40,2)">102</td>
-		<td class="team" id="41" onclick="changeImage(41,2)">11</td>
+		<td class="team" id="39" onclick="changeImage(39,2)">{team1}</td>
+		<td class="team" id="40" onclick="changeImage(40,2)">{team2}</td>
+		<td class="team" id="41" onclick="changeImage(41,2)">{team3}</td>
 	    </tr>
 	</table>
 	<table class="score" id="score1">
-	    <tr id="row0"></tr>
-	    <tr id="row1"></tr>
-	    <tr id="row2"></tr>
-	    <tr id="row3"></tr>
-	    <tr id="row4"></tr>
-	    <tr id="row5"></tr>
+	    <tr id="row0" class="tableR"></tr>
+	    <tr id="row1" class="tableR"></tr>
+	    <tr id="row2" class="tableR"></tr>
+	    <tr id="row3" class="tableR"></tr>
+	    <tr id="row4" class="tableR"></tr>
+	    <tr id="row5" class="tableR"></tr>
 	</table>
 	<table class="score" id="score2">
-	    <tr>
-		<td id="37"><img class="container" id="37" src="http://www.team102.org/2015/resources/images/containerlight.png" onclick="changeImage(37, 1)"/></td>
-	    <td id="38"><img class="container" id="38" src="http://www.team102.org/2015/resources/images/containerlitterlight.png" onclick="changeImage(38, 1)"/></td>
+	    <tr class="tableCR">
+		<td id="37" class="tableCD"><img class="container" id="37" src="http://www.team102.org/2015/resources/images/containerdull.png" onclick="changeImage(37, 1)"/></td>
+	    <td id="38" class="tableCD"><img class="container" id="38" src="http://www.team102.org/2015/resources/images/containerlitterdull.png" onclick="changeImage(38, 1)"/></td>
 	    </tr>
 	</table>
 	<table class="score" id="score3">
-		<tr id="yellow0"></tr>
-	    <tr id="yellow1"></tr>
-	    <tr id="yellow2"></tr>
-	    <tr id="yellow3"></tr>
+		<tr id="yellow0" class="tableYR"></tr>
+	    <tr id="yellow1" class="tableYR"></tr>
+	    <tr id="yellow2" class="tableYR"></tr>
+	    <tr id="yellow3" class="tableYR"></tr>
 	</table>
 	<form id="form" action="teleop.php"  method="POST">
-		<input type="submit" name="btnNext" class="bigButton" value="Next"/>
-		<input type="submit" name="btnDone" class="bigButton" value="Done" id="done"/>
+		<input type="submit" id="Next" name="btnNext" class="bigButton" value="Next"/>
+		<input type="submit" id="Done" name="btnDone" class="bigButton" value="Done" id="done"/>
 		<input name="tote_start_height" id="input0s"/>
 		<input name="tote_end_height" id="input0e"/>
 		<input name="container_scored" id="input1c"/>

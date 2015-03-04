@@ -1,5 +1,5 @@
 ﻿body {
-	background-image: url("http://www.team102.org/2015Dev/Geary.jpg");
+	background-image: url("Gray-y.jpg");
     margin: 0 auto;
     font-size: 1.3em;
     color: white;
@@ -83,7 +83,7 @@ body div {
 #Match .match_number
 {
 	float:left; 
-	width:8.5em;
+	width:8em;
 	text-align:left;
 	padding: 3px 2px; 
 	margin-left: 5px;

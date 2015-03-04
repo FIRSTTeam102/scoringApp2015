@@ -8,6 +8,22 @@ body {
 p{
   color: white;
 }
+#mRed{
+ background: #DE1409;
+ border-color: #DE1409;
+ }
+ #mBlue{
+ background: #164DC4;
+ border-color: #164DC4;
+ }
+ #tRed{
+ background: #DE1409;
+ border-color: #DE1409;
+ }
+ #tBlue{
+ background: #164DC4;
+ border-color: #164DC4;
+ }
 .team{
   color: black;
   margin-right: 10px;
@@ -52,13 +68,15 @@ div{
  display: flex;
  flex-direction: row;
  flex-wrap: wrap;
-  justify-content: center;
+ justify-content: center;
  }
 .teamABC{
   margin: 10px 25px 10px 25px;
   padding-left: 10px;
   background-color: #8a8a8a;
   border: 8px ridge #8C6565;
+  width: 315px;
+  border: 8px ridge #f5f5f5;
 }
 .bigButton {
   background-color: #f7b448;
@@ -85,6 +103,7 @@ div{
   background-color: #21211E;
   text-align: center;
   width:  102px;
+  size: inherit;
 }
 input{
   visibility: hidden;

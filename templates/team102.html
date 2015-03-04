@@ -2,22 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>FRC 2015 Scoring App</title>
+    <title>Team102 Private Homepage</title>
     <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
 	<script type='text/javascript' src='jqueryui/js/jquery-1.10.2.js'></script>
 <!--    <link rel="stylesheet" href="stylesheet.css" /> -->
 	<style type="text/css">
 	body {
+	background-image: url("Geary.jpg");
+	background-repeat: repeat;
 	background-color: #222;
-	color: #383838;
-	}
-	form{
-	background-color: #F5F5F5;
-	color: #383838;
-	max-width: 600px;
-	padding-top: 25px;
-	padding-bottom: 25px;
-	border: 5px solid #8a8a8a;
+	background-attachment: fixed;
 	}
 	.header{
 	display: flex;
@@ -25,27 +19,25 @@
 	flex-wrap: wrap;
 	align-content: space-between;
 	}
-	.loginbox{
-	margin-left: 25px;
-	padding-left: 10px;
-	border: 5px ridge #ff7e00;
-	}
 	.nav {
-    padding: 0 25px;
+	max-width: 400px;
+	background-image: url("Untitled.png.png");
+    padding: 0 10px 17px 25px;
     border: 25px;
-    margin: 0 15 25 0px;
+    margin: 15px 15px 15px 15px;
 	order: 2;
 	align-self: flex-end;
 	flex-grow: 5;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-weight: 300;
-	color: #383838;
+	color: d5d5d8;
+	border-radius: 16px;
 	}
 	.logo {
 	 width: 300px;
     padding: 25px;
     border: 25px;
-    margin: 0;
+    margin: 0 15 25 0px;
 	order: 1;
 	flex-grow: 1;
 	font-size: 21px;
@@ -58,10 +50,13 @@
 	width: 102 px;
 	font-size: 20px;
 	margin-top: 17px;
+	}
+	.loginbox{
+	padding: 10px;
 	border: 5px ridge #ff7e00;
 	}
-	.fieldLabel	{
-		font-size: 20px;
+	.loginboxExterior{
+	margin-top: 25px;
 	}
 	</style>
     <!--[if IE]>
@@ -80,40 +75,54 @@
     <div id="page">
         <div class="header">
 			<div class="logo">
-			<img src="favicon.ico" style="float: right; padding: 3px 15px 0px 10px;"/>
-				<div id="team102" style="text-align: right">FIRST Team 102</div>
-				<div style="text-align: right">The Gearheads</div>
-				<div style="text-align: right">Somerville High School, NJ</div>
+            <img src="favicon.ico" style="float: right; padding: 3px 15px 20px 10px;" onclick="changeImage()"/>
+			<div id="indexForm" onclick="changeImage()">
+				<div id="team102" style="text-align: right"><strong>FIRST Team 102</strong></div>
+				<div style="text-align: right"><strong>PRIVATE HOMEPAGE</strong></div>
+				<div style="text-align: right"><strong>Log in to enter scoring app.</strong></div>
 			</div>
-		</div>
-		<form id="indexForm" action="team102.php" method="POST">
-			<div id="login">
-				<table style="background-color: #F7b448; padding: 5px;" class="loginbox">
-				<tr><td><label for="txtInitials" class="fieldLabel">Your Initials:</label></td>
-					<td><input type="text" maxLength="4" name="txtInitials" tabindex="1" style="width: 90px;"/></td>
-				</tr>
-				<tr><td><label for="txtPassword" class="fieldLabel">Password:</label></td>
-					<td><input type="password" name="txtPassword" tabindex="4" style="width: 90px;"/></td>
-				</tr>
-				</table>
-            </div>
-			<div class="nav">
-				<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnScoringApp" value="Team 102 Scoring App" /></div>
-				Scoring App
-				<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnStandings" value="Standings Page" /></div>
-				Each team's ranking and statistics.
-				<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnSurvey" value="Survey Results" /></div>
-				Team results based on Team 102's scouting survey.
-				<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnUpcoming" value="Upcoming Matches" /></div>
-				Schedule for matches that will be taking place
-				<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnAlliance" value="Alliance Selection" /></div>
-				Alliances that have been formed for the final matches
-				<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnLighterApp" value="Alliance Color Lighter" /></div>
-				Illuminate screen in blue or red to show support for your alliance!
-				<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnOverview" value="Game Overview" /></div>
-				An overview of the game.
-			</div>
-		</form>
+		    </div>
+			
+                <form class="nav" id="form" action="team102.php" method="POST">
+					<div id="login" class="loginboxExterior">
+					<table style="background-color: #F7b448; padding: 5px;" class="loginbox">
+					<tr><td><label for="txtInitials" class="fieldLabel">Your Initials:</label></td>
+						<td><input type="text" maxLength="4" name="txtInitials" tabindex="1" style="width: 90px;"/></td>
+					</tr>
+					<tr><td><label for="txtPassword" class="fieldLabel">Password:</label></td>
+						<td><input type="password" name="txtPassword" tabindex="4" style="width: 90px;"/></td>
+					</tr>
+					</table>
+					</div>
+					<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnScoringApp" value="Team 102 Scoring App" /></div>
+					Scoring App
+					<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnStandings" value="Standings Page" /></div>
+					Each team's ranking and statistics.
+					<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnSurvey" value="Survey Results" /></div>
+					Team results based on Team 102's scouting survey.
+					<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnUpcoming" value="Upcoming Matches" /></div>
+					Schedule for matches that will be taking place
+					<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnAlliance" value="Alliance Selection" /></div>
+					Alliances that have been formed for the final matches
+					<div style="padding-top: 10px;padding-bottom: 10px;"><input class="bigButton" type="submit" name="btnLighterApp" value="Alliance Color Lighter" /></div>
+					Illuminate screen in blue or red to show support for your alliance!
+				</form>
+        <script>
+	var groupHighlights = [false];
+
+function changeImage() {
+
+        if (groupHighlights[0]===false) {
+          document.getElementById("indexForm").style.background = "#ff8a19";
+          document.getElementById("indexForm").style.color = "black";
+          groupHighlights[0]=true;
+          } else {
+          document.getElementById("indexForm").style.background = "";
+          document.getElementById("indexForm").style.color = "white";
+          groupHighlights[0]=false;
+        }
+    } 
+		</script>
     </div>
 </body>
 <!-- END main -->
