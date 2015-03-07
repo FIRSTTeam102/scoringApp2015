@@ -191,6 +191,7 @@ input[type=radio]:checked {
 }
 #standings, #preview, .upcoming
 {
+	background-image: url("Untitled.png");
 	text-align:center; 
     vertical-align:middle;
 	font-size: 0.65em;

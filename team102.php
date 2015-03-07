@@ -15,7 +15,7 @@ $tpl->loadTemplatefile("team102.html", true, true);
 $tpl->touchBlock("main");
 
 if(isset($_POST['btnScoringApp']) || isset($_POST['btnStandings']) || isset($_POST['btnSurvey']) || isset($_POST['btnPreview']) 
-|| isset($_POST['btnAlliance']))
+|| isset($_POST['btnAlliance']) || isset($_POST['btnUpcoming']))
 {
 	$password = $_POST['txtPassword'];
 	$initials = $_POST['txtInitials'];

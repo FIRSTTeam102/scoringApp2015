@@ -6,7 +6,7 @@
 	// Connect to the database.
 	$link = mysql_connect('Team102.org:3306', 'team102_webuser', 'Gearheads');
 	
-	if (!mysql_select_db('team102_2014', $link)) {
+	if (!mysql_select_db('team102_2015', $link)) {
     		echo sprintf('Could not select database, Err: %s', mysql_error());
     		exit;
 	}
