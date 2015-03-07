@@ -76,14 +76,14 @@
 									, $_SESSION['cycleNumber']
 									, $_POST['tote_start_height'] == null ? "0" : $_POST['tote_start_height']
 									, $_POST['tote_end_height'] == null ? "0" : $_POST['tote_end_height']
-									, isset($_POST['container_scored']) ? "Y" : "N"
-									, isset($_POST['litter_scored']) ? "Y" : "N"
+									, $_POST['container_scored'] == null ? ($_POST['litter_scored'] == null ? "N" : "Y") : "Y"
+									, $_POST['litter_scored'] == null ? "N" : "Y"
 									, $_POST['coop_start_height'] == null ? "0" : $_POST['coop_start_height']
 									, $_POST['coop_end_height'] == null ? "0" : $_POST['coop_end_height']
 									, $_POST['tote_start_height'] == null ? "0" : $_POST['tote_start_height']
 									, $_POST['tote_end_height'] == null ? "0" : $_POST['tote_end_height']
-									, isset($_POST['container_scored']) ? "Y" : "N"
-									, isset($_POST['litter_scored']) ? "Y" : "N"
+									, $_POST['container_scored'] == null ? ($_POST['litter_scored'] == null ? "N" : "Y") : "Y"
+									, $_POST['litter_scored'] == null ? "N" : "Y"
 									, $_POST['coop_start_height'] == null ? "0" : $_POST['coop_start_height']
 									, $_POST['coop_end_height'] == null ? "0" : $_POST['coop_end_height']
 									);
