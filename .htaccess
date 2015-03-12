@@ -1,0 +1,4 @@
+<Files "junk">
+Order Allow,Deny
+Deny from all
+</Files>

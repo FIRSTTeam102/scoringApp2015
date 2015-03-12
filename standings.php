@@ -15,11 +15,11 @@
 		echo sprintf('Could not select database, Err: %s', mysql_error());
 		exit;
 	}
-	$sort = "team_number";
+	$sort = "Avg_Earned_Pts_Per_Match";
 	if($_GET['sort'] != null)
 		$sort = $_GET['sort'];
 
-	$sql = "select mt.tournament_id, mt.team_number, count(mt.match_number) num_matches"
+/*	$sql = "select mt.tournament_id, mt.team_number, count(mt.match_number) num_matches"
 	. ", avg(mtc.tote_end_height - mtc.tote_start_height) as avgAdded"
 	. ", sum(CASE mtc.container_scored"
 	. "            WHEN 'Y' THEN 1"
@@ -39,7 +39,9 @@
 	. "       AND (`mt`.`completed` = 'Y')"
 	. "       AND (`t`.`active` = 'Y'))"
 	. " group by 1, 2 order by ";
-
+*/
+	$sql = "select * from team_avg_pts_v where tournament_id = 'T' order by ";		// Temporary.
+	
 	if($_GET['AllTournaments'] != null)
 		$sql = "select apv.* 
 				from t_team_avg_pts_v  apv

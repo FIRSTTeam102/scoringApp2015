@@ -16,7 +16,7 @@ $tpl->loadTemplatefile("PublicHome.html", true, true);
 $tpl->touchBlock("main");
 
 if(isset($_POST['btnScoringApp']) || isset($_POST['btnStandings']) || isset($_POST['btnSurvey']) || isset($_POST['btnPreview']) 
-|| isset($_POST['btnAlliance']) || isset($_POST['btnPrivate']) || isset($_POST['btnUpcoming']))
+|| isset($_POST['btnAlliance']) || isset($_POST['btnPrivate']) || isset($_POST['btnOverview']) || isset($_POST['btnUpcoming']))
 {
 	$publicPwd = file_get_contents('junk');
 	$link = @mysql_connect('team102.org:3306', 'team102_readonly', $publicPwd);
@@ -60,6 +60,8 @@ if(isset($_POST['btnScoringApp']) || isset($_POST['btnStandings']) || isset($_PO
 					header ("location: upcoming.php");
 				else if(isset($_POST['btnPrivate']))
 					header ("location: team102.php");
+				else if(isset($_POST['btnOverview']))
+					header ("location: overview.html");
 			}
 		}
 	}

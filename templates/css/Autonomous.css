@@ -58,6 +58,7 @@ div{
 }
 .top {
   display: flex;
+  display:-webkit-flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin: auto;
@@ -66,6 +67,7 @@ div{
  } 
 .teams {
  display: flex;
+ display:-webkit-flex;
  flex-direction: row;
  flex-wrap: wrap;
  justify-content: center;

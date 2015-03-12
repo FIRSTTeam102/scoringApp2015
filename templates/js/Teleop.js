@@ -65,8 +65,9 @@ function createYellow() {
         for (var j = 0; j < 4; j++) {
           
             var id = (i * 4 + j);
-          
-            if (i + j >= 4) {
+			
+			
+            if (i + j >= 4 || (i===0&&j===0)) {
               
                 document.getElementById("yellow" + i).innerHTML = document.getElementById("yellow" + i).innerHTML + "<td id='" + (id+100)+ "';> <img class='totes'  class='tableYD' src='http://www.team102.org/2015/resources/images/yellowtotegrey.png'</td>";
               
