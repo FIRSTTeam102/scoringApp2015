@@ -105,7 +105,8 @@
 	/* Create a new XPath object */
 	$xpath = new DomXPath($dom);
 	/* Query all <td> nodes containing specified class name */
-	$nodes = $xpath->query("//table[@class='clean']//tr//td");					// 2015
+	$nodes = $xpath->query("//table//tr//td");					// 2015  UMass
+//	$nodes = $xpath->query("//table[@class='clean']//tr//td");					// 2015 HH
 //	$nodes = $xpath->query("//tr[@style='background-color:#FFFFFF;']//td");		// 2014
 //	$nodes = $xpath->query("//td");
 	/* Set HTTP response header to plain text for debugging output */

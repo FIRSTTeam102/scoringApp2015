@@ -359,3 +359,5 @@
 [23-Feb-2015 20:26:55 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home/team102/public_html/2015Dev/teleop.php on line 137
 [24-Feb-2015 17:59:52 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home/team102/public_html/2015Dev/teleop.php on line 45
 [07-Mar-2015 09:34:06 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting ',' or ';' in /home/team102/public_html/2015Dev/parsematches.php on line 26
+[13-Mar-2015 05:46:02 America/Chicago] PHP Parse error:  syntax error, unexpected 'by' (T_STRING) in /home/team102/public_html/2015Dev/upcoming.php on line 23
+[13-Mar-2015 05:50:44 America/Chicago] PHP Parse error:  syntax error, unexpected 'UM' (T_STRING) in /home/team102/public_html/2015Dev/upcoming.php on line 22

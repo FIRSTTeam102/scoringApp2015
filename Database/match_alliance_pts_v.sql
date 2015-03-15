@@ -143,6 +143,7 @@ and mtpv.match_number = mt.match_number
 and mtpv.team_number = mt.team_number
 and (`mt`.`completed` = 'Y') 
 ) 
+and m.ignore_match = 'N'
 group by 1,2,3,4,5,6;
 
 create or replace view team_avg_pts_v as
@@ -193,3 +194,25 @@ where arv.tournament_id = mtpv.tour;
 
 select * from match_teams
 where tournament_id = 'T';
+
+select * from match_team_credits_v
+where tournament_id = 'UM'
+and team_number = 102;
+
+select * from alliance_pts_v
+where tournament_id = 'UM';
+
+select * from alliance_results_v
+where tournament_id = 'UM';
+
+select * from match_team_results_v
+where tournament_id = 'UM';
+
+select * from match_team_pts_v
+where tournament_id = 'UM'
+and team_number = 102;
+
+select * from match_teams
+where tournament_id = 'UM'
+and match_number = 13
+order by match_number, team_number;

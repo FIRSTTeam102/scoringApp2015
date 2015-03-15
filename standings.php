@@ -15,7 +15,7 @@
 		echo sprintf('Could not select database, Err: %s', mysql_error());
 		exit;
 	}
-	$sort = "Avg_Earned_Pts_Per_Match";
+	$sort = "Avg_Earned_Pts_Per_Match desc";
 	if($_GET['sort'] != null)
 		$sort = $_GET['sort'];
 
@@ -40,7 +40,7 @@
 	. "       AND (`t`.`active` = 'Y'))"
 	. " group by 1, 2 order by ";
 */
-	$sql = "select * from team_avg_pts_v where tournament_id = 'T' order by ";		// Temporary.
+	$sql = "select * from team_avg_pts_v where tournament_id = 'UM' order by ";		// Temporary.
 	
 	if($_GET['AllTournaments'] != null)
 		$sql = "select apv.* 
@@ -104,7 +104,7 @@
 				   //print the header
 				   foreach($colNames as $colName)
 				   {
-						if(($colName == 'team_number') || ($colName == 'avg_pts_against') || ($colName == 'num_matches') || ($colName == 'rank'))
+						if(($colName == 'team_number') || ($colName == 'luck_factor') || ($colName == 'num_matches') || ($colName == 'rank'))
 						{
 							$default_sort = ' asc';
 							$second_sort = ' desc';

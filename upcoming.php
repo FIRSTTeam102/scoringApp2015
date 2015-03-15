@@ -19,7 +19,9 @@
 					and team_number = 102
 					and completed = 'N')
 				and tap.team_number = mt.team_number
-				order by mt.match_number, mt.alliance, tap.rank";
+				and tap.tournament_id in (select id from tournaments where active = 'Y')
+				order by mt.match_number, mt.alliance";
+//				order by mt.match_number, mt.alliance, tap.rank";
 	
 	$standingsQ = mysql_query($sql, $link);
 	if (!$standingsQ) {

@@ -6,7 +6,7 @@
 	// Connect to the database.
 	$link = mysql_connect('Team102.org:3306', 'team102_webuser', 'Gearheads');
 	
-	if (!mysql_select_db('team102_2014', $link)) {
+	if (!mysql_select_db('team102_2015', $link)) {
     		echo sprintf('Could not select database, Err: %s', mysql_error());
     		exit;
 	}
@@ -46,14 +46,13 @@
 	
 	if($matchNumber != null){
 		$sql = sprintf("select mt.alliance as alliy, s.*
-					from %s s
-					, match_teams mt
-          , tournaments t
-					where s.team_number = mt.team_number
-          and mt.tournament_id = t.id
-          and t.active = 'Y'
-					and	mt.match_number = %s
-					order by alliance, avg_pts desc", $view, $matchNumber);
+					from tournaments t
+					join match_teams mt on mt.tournament_id = t.id
+					left join %s s on s.team_number = mt.team_number and s.tournament_id = mt.tournament_id
+					where 
+				          t.active = 'Y'
+  					  and mt.match_number = %s
+					order by alliance", $view, $matchNumber);
 	
 		
 		$previewQ = mysql_query($sql, $link);
@@ -107,7 +106,6 @@
 <body>
 <form id="MatchesForm" action="preview.php" method="POST">
 <div id="button_holder">
-	<a href="scoringapp.php" style="color:white; text-style:none;">Scoring App</a>&nbsp;&nbsp;&nbsp;&nbsp;
 	<a href="standings.php" style="color:white; text-style:none;">Standings</a>&nbsp;&nbsp;&nbsp;&nbsp;
 	<a href="survey.php" style="color:white; text-style:none;">Survey</a>&nbsp;&nbsp;&nbsp;&nbsp;
 	<a href="upcoming.php" style="color:white; text-style:none;">Upcoming</a>
@@ -123,7 +121,7 @@
 	}
 	?>
 </select>
-<input value="<?php echo ((!$_POST['show_competitions']) || ($_POST['show_competitions'] == 'Hide All Competitions')) ? 'Show All Competitions' : 'Hide All Competitions'; ?>" name="show_competitions" type="submit"/>
+<!-- <input value="<?php echo ((!$_POST['show_competitions']) || ($_POST['show_competitions'] == 'Hide All Competitions')) ? 'Show All Competitions' : 'Hide All Competitions'; ?>" name="show_competitions" type="submit"/> -->
  <table border="1" id="preview">
  <tr>
     <?php
