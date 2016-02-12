@@ -40,7 +40,7 @@
 	. "       AND (`t`.`active` = 'Y'))"
 	. " group by 1, 2 order by ";
 */
-	$sql = "select * from team_avg_pts_v where tournament_id = 'UM' order by ";		// Temporary.
+	$sql = "select * from team_avg_pts_v where tournament_id = 'B' order by ";		// Temporary.
 	
 	if($_GET['AllTournaments'] != null)
 		$sql = "select apv.* 

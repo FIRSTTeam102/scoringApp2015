@@ -31,10 +31,12 @@ function startUp(){
 		setBorderHighlightBySelector("score",1, colorDark);
 		setBorderHighlightBySelector("score",2, colorDark);
 		setBorderHighlightBySelector("score",3, colorDark);
+		setBorderHighlightBySelector("score",4, colorDark);
 		setBackgroundHighlight("score0", undefined, colorDull);
 		setBackgroundHighlight("score1", undefined, colorDull);
 		setBackgroundHighlight("score2", undefined, colorDull);
 		setBackgroundHighlight("score3", undefined, colorDull);
+		setBackgroundHighlight("score4", undefined, colorDull);
 		setBorderHighlightById("Next", false);
 		setBorderHighlightById("Done", false);
 }

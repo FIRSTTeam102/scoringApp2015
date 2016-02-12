@@ -96,10 +96,10 @@
 //	$dom->loadHTMLFile("http://www2.usfirst.org/2014comp/Events/NJFLA/matchresults.html");		// 2014
 
 	// NOTE: Set OUR tournament ID here.
-	$tournament_id = "UM";
+	$tournament_id = "B";
 	
 	// NOTE: Change FIRST's event id in this URL to select a different tournament.
-	$url = "http://frc-events.usfirst.org/2015/MANDA/qualifications";					// 2015
+	$url = "http://frc-events.usfirst.org/2015/NJBRI/qualifications";					// 2015
 	$dom->loadHTMLFile($url);				
 	
 	/* Create a new XPath object */
